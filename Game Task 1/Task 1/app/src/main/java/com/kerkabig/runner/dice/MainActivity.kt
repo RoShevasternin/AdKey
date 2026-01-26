@@ -1,11 +1,12 @@
 package com.kerkabig.runner.dice
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import com.badlogic.gdx.backends.android.AndroidFragmentApplication
 import com.kerkabig.runner.dice.databinding.ActivityMainBinding
+import com.kerkabig.runner.dice.game.GDX_GLOBAL_isGame
 import com.kerkabig.runner.dice.util.OneTime
 import com.kerkabig.runner.dice.util.log
 import kotlinx.coroutines.CoroutineScope
@@ -25,6 +26,8 @@ class MainActivity : AppCompatActivity(), AndroidFragmentApplication.Callbacks {
         super.onCreate(savedInstanceState)
 
         initialize()
+
+        GDX_GLOBAL_isGame = true
     }
 
     override fun exit() {
@@ -41,6 +44,12 @@ class MainActivity : AppCompatActivity(), AndroidFragmentApplication.Callbacks {
     private fun initialize() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+    }
+
+    fun openPrivacyPolicy() {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com"))
+        startActivity(intent)
+
     }
 
 }

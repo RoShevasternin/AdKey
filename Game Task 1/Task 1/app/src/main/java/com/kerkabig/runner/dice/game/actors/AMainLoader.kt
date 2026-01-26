@@ -28,8 +28,8 @@ class AMainLoader(override val screen: LoaderScreen): AdvancedGroup() {
             setBounds(105f, 992f, 877f, 781f)
             setOrigin(Align.center)
             addAction(Acts.forever(Acts.sequence(
-                Acts.scaleTo(1.1f, 0.25f),
-                Acts.scaleTo(1.0f, 0.25f),
+                Acts.scaleTo(1.02f, 1.02f, 0.25f),
+                Acts.scaleTo(1.0f, 1.0f, 0.25f),
             )))
         }
     }
@@ -40,8 +40,8 @@ class AMainLoader(override val screen: LoaderScreen): AdvancedGroup() {
             setBounds(421f, 367f, 238f, 507f)
             setOrigin(Align.center or Align.bottom)
             addAction(Acts.forever(Acts.sequence(
-                Acts.scaleTo(0.85f, 0.25f),
-                Acts.scaleTo(1.0f, 0.25f),
+                Acts.scaleTo(0.98f, 0.98f, 0.55f),
+                Acts.scaleTo(1.0f, 1.0f, 0.55f),
             )))
         }
     }
@@ -50,6 +50,17 @@ class AMainLoader(override val screen: LoaderScreen): AdvancedGroup() {
         addActors(imgA, imgB)
         imgA.setBounds(-62f, -116f, 763f, 945f)
         imgB.setBounds(505f, -63f, 640f, 780f)
+
+        imgA.setOrigin(Align.left or Align.bottom)
+        imgA.addAction(Acts.forever(Acts.sequence(
+            Acts.scaleTo(0.99f, 0.99f, 0.55f),
+            Acts.scaleTo(1.0f, 1.0f, 0.55f),
+        )))
+        imgB.setOrigin(Align.right or Align.bottom)
+        imgB.addAction(Acts.forever(Acts.sequence(
+            Acts.scaleTo(0.99f, 0.99f, 0.55f),
+            Acts.scaleTo(1.0f, 1.0f, 0.55f),
+        )))
     }
 
 }

@@ -11,13 +11,15 @@ import com.kerkabig.runner.dice.game.manager.util.SpriteUtil
 import com.kerkabig.runner.dice.game.screens.LoaderScreen
 import com.kerkabig.runner.dice.game.utils.GameColor
 import com.kerkabig.runner.dice.game.utils.advanced.AdvancedGame
-import com.kerkabig.runner.dice.game.dataStore.DS_Key
+import com.kerkabig.runner.dice.game.dataStore.DS_Record
 import com.kerkabig.runner.dice.game.utils.disposeAll
 import com.kerkabig.runner.dice.util.currentClassName
 import com.kerkabig.runner.dice.util.log
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
+
+var GDX_GLOBAL_isGame = false
 
 class GDXGame(val activity: MainActivity) : AdvancedGame() {
 
@@ -38,7 +40,7 @@ class GDXGame(val activity: MainActivity) : AdvancedGame() {
 
     val coroutine = CoroutineScope(Dispatchers.Default)
 
-    val ds_star = DS_Key(coroutine)
+    val ds_Record = DS_Record(coroutine)
 
     override fun create() {
         navigationManager = NavigationManager(this)

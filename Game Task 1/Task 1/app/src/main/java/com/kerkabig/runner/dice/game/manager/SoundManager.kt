@@ -17,17 +17,10 @@ class SoundManager(var assetManager: AssetManager) {
     }
 
     enum class EnumSound(val data: SoundData) {
-        boom1(SoundData("sound/boom1.mp3")),
-        boom2(SoundData("sound/boom2.mp3")),
-        boom3(SoundData("sound/boom3.mp3")),
-        boom4(SoundData("sound/boom4.mp3")),
-        boom5(SoundData("sound/boom5.mp3")),
-        boom6(SoundData("sound/boom6.mp3")),
-        boom7(SoundData("sound/boom7.mp3")),
-
-        touch(SoundData("sound/touch.mp3")),
-
-        click(SoundData("sound/click.wav")),
+        click (SoundData("sound/click.mp3")),
+        step  (SoundData("sound/step.mp3")),
+        lose  (SoundData("sound/lose.mp3")),
+        win   (SoundData("sound/win.mp3")),
 
     }
 

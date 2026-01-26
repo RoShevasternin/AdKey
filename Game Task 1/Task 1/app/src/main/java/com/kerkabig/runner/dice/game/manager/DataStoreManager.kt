@@ -10,22 +10,9 @@ import kotlinx.coroutines.flow.first
 object DataStoreManager: AbstractDataStore() {
     override val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "DATA_STORE")
 
-    object Star: DataStoreElement<Int>() {
-        override val key = intPreferencesKey("star")
-    }
-    object Key: DataStoreElement<Int>() {
+    object Record: DataStoreElement<Int>() {
         override val key = intPreferencesKey("key")
     }
-    object Level: DataStoreElement<String>() {
-        override val key = stringPreferencesKey("level")
-    }
-
-
-    // Ще не використовуються
-    object IsTutorials: DataStoreElement<Boolean>() {
-        override val key = booleanPreferencesKey("isTutorials")
-    }
-
 
 }
 

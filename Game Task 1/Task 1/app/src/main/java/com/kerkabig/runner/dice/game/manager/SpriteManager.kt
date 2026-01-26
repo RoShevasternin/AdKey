@@ -48,6 +48,10 @@ class SpriteManager(var assetManager: AssetManager) {
         HTP_1      (TextureData("textures/all/htp_1.png")),
         HTP_2      (TextureData("textures/all/htp_2.png")),
         LEADERBOARD(TextureData("textures/all/leaderboard.png")),
+        PANEL      (TextureData("textures/all/panel.png")),
+        ARROW      (TextureData("textures/all/arrow.png")),
+        WIN        (TextureData("textures/all/win.png")),
+        LOSE       (TextureData("textures/all/lose.png")),
     }
 
     data class AtlasData(val path: String) {

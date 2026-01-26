@@ -1,0 +1,5 @@
+alias: key0
+pass:  aisdoasdknweqbw
+
+policy: ---
+terms: ---

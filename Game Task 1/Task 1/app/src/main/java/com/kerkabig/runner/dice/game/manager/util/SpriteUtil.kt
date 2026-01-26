@@ -61,6 +61,10 @@ class SpriteUtil {
          val HTP_1       = SpriteManager.EnumTexture.HTP_1.data.texture
          val HTP_2       = SpriteManager.EnumTexture.HTP_2.data.texture
          val LEADERBOARD = SpriteManager.EnumTexture.LEADERBOARD.data.texture
+         val PANEL       = SpriteManager.EnumTexture.PANEL.data.texture
+         val ARROW       = SpriteManager.EnumTexture.ARROW.data.texture
+         val WIN         = SpriteManager.EnumTexture.WIN.data.texture
+         val LOSE        = SpriteManager.EnumTexture.LOSE.data.texture
 
      }
 

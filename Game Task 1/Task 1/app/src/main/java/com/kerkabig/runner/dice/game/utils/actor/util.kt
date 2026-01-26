@@ -68,6 +68,10 @@ fun List<Actor>.setFillParent() {
     }
 }
 
+fun Actor.setBounds(bounds: Bounds) {
+    setBounds(bounds.x, bounds.y, bounds.x, bounds.y)
+}
+
 fun Actor.setBounds(position: Vector2, size: Vector2) {
     setBounds(position.x, position.y, size.x, size.y)
 }
@@ -113,3 +117,10 @@ fun Actor.animDelay(time: Float, block: () -> Unit = {}) {
         Acts.run { block.invoke() }
     ))
 }
+
+data class Bounds(
+    val x: Float,
+    val y: Float,
+    val w: Float,
+    val h: Float,
+)

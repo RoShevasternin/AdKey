@@ -1,5 +1,6 @@
 package com.kerkabig.runner.dice.game.screens
 
+import com.kerkabig.runner.dice.game.GDX_GLOBAL_isGame
 import com.kerkabig.runner.dice.game.actors.AMainLoader
 import com.kerkabig.runner.dice.game.manager.MusicManager
 import com.kerkabig.runner.dice.game.manager.SoundManager
@@ -54,9 +55,11 @@ class LoaderScreen : AdvancedScreen() {
         with(gdxGame.spriteManager) {
             loadableAtlasList = mutableListOf(SpriteManager.EnumAtlas.LOADER.data)
             loadAtlas()
+            loadableTexturesList = mutableListOf(SpriteManager.EnumTexture.BACKGROUND.data)
+            loadTexture()
         }
         gdxGame.assetManager.finishLoading()
-        gdxGame.spriteManager.initAtlas()
+        gdxGame.spriteManager.initAtlasAndTexture()
     }
 
     private fun loadAssets() {
@@ -110,17 +113,17 @@ class LoaderScreen : AdvancedScreen() {
     }
 
     private fun isFinish() {
-        if (isFinishProgress) {
+        if (isFinishProgress && GDX_GLOBAL_isGame) {
             isFinishProgress = false
 
-//            game.musicUtil.apply { music = main.apply {
-//                isLooping = true
-//                coff      = 0.15f
-//            } }
+            gdxGame.musicUtil.apply { currentMusic = VILLAGE.apply {
+                isLooping = true
+                coff      = 0.15f
+            } }
 
-//            animHide {
-//                gdxGame.navigationManager.navigate(MenuScreen::class.java.name)
-//            }
+            animHide {
+                gdxGame.navigationManager.navigate(MenuScreen::class.java.name)
+            }
         }
     }
 
