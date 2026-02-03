@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.task123.task321"
+    namespace = "com.edventgaming.egyptadventgame"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.task123.task321"
+        applicationId = "com.edventgaming.egyptadventgame"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
