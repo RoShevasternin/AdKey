@@ -1,9 +1,12 @@
 package com.kerkabig.runner.dice.game
 
+import android.content.Context.MODE_PRIVATE
+import android.content.SharedPreferences
 import com.badlogic.gdx.assets.AssetManager
 import com.badlogic.gdx.utils.Disposable
 import com.badlogic.gdx.utils.ScreenUtils
 import com.kerkabig.runner.dice.MainActivity
+import com.kerkabig.runner.dice.appContext
 import com.kerkabig.runner.dice.game.manager.*
 import com.kerkabig.runner.dice.game.manager.util.MusicUtil
 import com.kerkabig.runner.dice.game.manager.util.SoundUtil
