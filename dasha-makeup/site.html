@@ -113,6 +113,12 @@ p{margin:0}
 .nav-links a:hover{color:var(--porcelain)}
 .nav-links a:hover::after{transform:scaleX(1)}
 .nav .btn{--pad:.65rem 1.15rem;font-size:.88rem}
+.nav-end{display:flex;align-items:center;gap:.8rem}
+.lang{display:inline-flex;gap:2px;padding:3px;border:1px solid var(--line);border-radius:999px}
+.lang button{border:0;background:transparent;color:var(--mist);font-size:.74rem;font-weight:600;letter-spacing:.08em;padding:.42rem .62rem;border-radius:999px;transition:background .25s,color .25s}
+.lang button:hover{color:var(--porcelain)}
+.lang button[aria-pressed="true"]{background:var(--porcelain);color:var(--ink)}
+@media (max-width:720px){.nav-end .btn{display:none}}
 @media (max-width:900px){.nav-links{display:none}}
 @media (max-width:420px){.brand-word small{display:none}}
 
@@ -476,8 +482,8 @@ html.glitter-mode h2 em{background:linear-gradient(100deg,var(--champagne),var(-
 
 <div class="credit" id="top">
   <div class="wrap">
-    <p>Сайт зроблено <b>Владом</b> — «Востіка Братєльнік» — для <b>Дашки</b> <span class="heart">♡</span></p>
-    <a href="#birthday">10.10 · Даші 35 · з днем народження ✦</a>
+    <p data-i18n="credit.made">Сайт зроблено <b>Владом</b> — «Востіка Братєльнік» — для <b>Дашки</b> <span class="heart">♡</span></p>
+    <a data-i18n="credit.bday" href="#birthday">10.10 · Даші 35 · з днем народження ✦</a>
   </div>
 </div>
 
@@ -488,12 +494,19 @@ html.glitter-mode h2 em{background:linear-gradient(100deg,var(--champagne),var(-
       <span class="brand-word"><b>DASHA</b><small>makeup atelier</small></span>
     </a>
     <ul class="nav-links">
-      <li><a href="#services">Послуги</a></li>
-      <li><a href="#works">Роботи</a></li>
-      <li><a href="#studio">Студія образу</a></li>
-      <li><a href="#faq">Контакти</a></li>
+      <li><a data-i18n="nav.services" href="#services">Послуги</a></li>
+      <li><a data-i18n="nav.works" href="#works">Роботи</a></li>
+      <li><a data-i18n="nav.studio" href="#studio">Студія образу</a></li>
+      <li><a data-i18n="nav.contacts" href="#faq">Контакти</a></li>
     </ul>
-    <a class="btn btn-primary" href="#booking">Записатися</a>
+    <div class="nav-end">
+      <div class="lang" role="group" aria-label="Мова / Język / Language">
+        <button type="button" data-lang="uk" aria-pressed="true" title="Українська">UA</button>
+        <button type="button" data-lang="pl" aria-pressed="false" title="Polski">PL</button>
+        <button type="button" data-lang="en" aria-pressed="false" title="English">EN</button>
+      </div>
+      <a data-i18n="nav.book" class="btn btn-primary" href="#booking">Записатися</a>
+    </div>
   </div>
 </header>
 
@@ -503,20 +516,20 @@ html.glitter-mode h2 em{background:linear-gradient(100deg,var(--champagne),var(-
   <canvas id="glitter" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="hero-copy">
-      <span class="eyebrow">Візаж · Естетична косметологія</span>
+      <span data-i18n="hero.eyebrow" class="eyebrow">Візаж · Естетична косметологія</span>
       <div>
         <h1 id="hero-title" class="shimmer">Dasha</h1>
         <p class="tagline">a dash of glow</p>
       </div>
-      <p class="lead">Макіяж, після якого ви впізнаєте себе — тільки в найкращий день. Денні й вечірні образи, весілля, зйомки та догляд за шкірою.</p>
+      <p data-i18n="hero.lead" class="lead">Макіяж, після якого ви впізнаєте себе — тільки в найкращий день. Денні й вечірні образи, весілля, зйомки та догляд за шкірою.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#booking">Записатися на макіяж <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        <a class="btn btn-ghost" href="#studio">Приміряти образ онлайн</a>
+        <a class="btn btn-primary" href="#booking"><span data-i18n="hero.cta1">Записатися на макіяж</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a data-i18n="hero.cta2" class="btn btn-ghost" href="#studio">Приміряти образ онлайн</a>
       </div>
       <ul class="hero-meta">
-        <li>Студія або виїзд</li>
-        <li>Пробний макіяж для наречених</li>
-        <li>Відповідь у Telegram</li>
+        <li data-i18n="hero.m1">Студія або виїзд</li>
+        <li data-i18n="hero.m2">Пробний макіяж для наречених</li>
+        <li data-i18n="hero.m3">Відповідь у Telegram</li>
       </ul>
     </div>
     <div class="hero-visual">
@@ -527,7 +540,7 @@ html.glitter-mode h2 em{background:linear-gradient(100deg,var(--champagne),var(-
           <circle cx="50" cy="50" r="49" fill="url(#g-glow)"/>
           <g class="ring">
             <path id="seal-path" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" fill="none"/>
-            <text font-family="Onest, sans-serif" font-size="8.4" font-weight="600" fill="#2a0f1b" letter-spacing="1"><textPath href="#seal-path" textLength="236" lengthAdjust="spacing">З ДНЕМ НАРОДЖЕННЯ ✦ ДАША ✦ 10.10 ✦</textPath></text>
+            <text font-family="Onest, sans-serif" font-size="8.4" font-weight="600" fill="#2a0f1b" letter-spacing="1"><textPath data-i18n="seal" href="#seal-path" textLength="236" lengthAdjust="spacing">З ДНЕМ НАРОДЖЕННЯ ✦ ДАША ✦ 10.10 ✦</textPath></text>
           </g>
         </svg>
         <b>35</b>
@@ -538,8 +551,8 @@ html.glitter-mode h2 em{background:linear-gradient(100deg,var(--champagne),var(-
 
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
-    <ul><li>Soft Glam</li><li>Nude</li><li>Smoky Eyes</li><li>Bridal Glow</li><li>Glass Skin</li><li>Брови і вії</li><li>Догляд</li><li>Red Carpet</li></ul>
-    <ul><li>Soft Glam</li><li>Nude</li><li>Smoky Eyes</li><li>Bridal Glow</li><li>Glass Skin</li><li>Брови і вії</li><li>Догляд</li><li>Red Carpet</li></ul>
+    <ul><li>Soft Glam</li><li>Nude</li><li>Smoky Eyes</li><li>Bridal Glow</li><li>Glass Skin</li><li data-i18n="mq.brows">Брови і вії</li><li data-i18n="mq.care">Догляд</li><li>Red Carpet</li></ul>
+    <ul><li>Soft Glam</li><li>Nude</li><li>Smoky Eyes</li><li>Bridal Glow</li><li>Glass Skin</li><li data-i18n="mq.brows">Брови і вії</li><li data-i18n="mq.care">Догляд</li><li>Red Carpet</li></ul>
   </div>
 </div>
 
@@ -551,14 +564,14 @@ html.glitter-mode h2 em{background:linear-gradient(100deg,var(--champagne),var(-
       <div class="mark-big" aria-hidden="true"><svg viewBox="0 0 100 100" width="100%" height="100%"><use href="#mark"/></svg></div>
     </div>
     <div class="about-copy">
-      <span class="eyebrow">Про мене</span>
-      <h2 id="about-title">Привіт, я Даша. Роблю так, щоб ви <em>сяяли</em></h2>
-      <p class="lead" style="max-width:46ch">Я візажистка й косметологиня. Найкращий макіяж починається зі шкіри: спершу догляд і підготовка, потім колір. Мій підхід — a dash of glow: рівно стільки сяйва, щоб ви виглядали собою, тільки впевненішою.</p>
+      <span data-i18n="about.eyebrow" class="eyebrow">Про мене</span>
+      <h2 data-i18n="about.h2" id="about-title">Привіт, я Даша. Роблю так, щоб ви <em>сяяли</em></h2>
+      <p data-i18n="about.lead" class="lead" style="max-width:46ch">Я візажистка й косметологиня. Найкращий макіяж починається зі шкіри: спершу догляд і підготовка, потім колір. Мій підхід — a dash of glow: рівно стільки сяйва, щоб ви виглядали собою, тільки впевненішою.</p>
       <span class="sign">Dasha</span>
       <ul class="principles">
-        <li><b>Шкіра — перш за все</b><span>Кожен образ починається з догляду й підготовки шкіри.</span></li>
-        <li><b>Образ під вашу подію</b><span>Враховую світло, фотографа, сукню і скільки триватиме день.</span></li>
-        <li><b>Чисті інструменти</b><span>Продезінфіковані пензлі та одноразові аплікатори для кожної гості.</span></li>
+        <li data-i18n="about.p1"><b>Шкіра — перш за все</b><span>Кожен образ починається з догляду й підготовки шкіри.</span></li>
+        <li data-i18n="about.p2"><b>Образ під вашу подію</b><span>Враховую світло, фотографа, сукню і скільки триватиме день.</span></li>
+        <li data-i18n="about.p3"><b>Чисті інструменти</b><span>Продезінфіковані пензлі та одноразові аплікатори для кожної гості.</span></li>
       </ul>
     </div>
   </div>
@@ -569,56 +582,56 @@ html.glitter-mode h2 em{background:linear-gradient(100deg,var(--champagne),var(-
   <div class="wrap">
     <div class="head">
       <div>
-        <span class="eyebrow">Послуги</span>
-        <h2 id="svc-title">Від легкого nude до <em>red carpet</em></h2>
+        <span data-i18n="svc.eyebrow" class="eyebrow">Послуги</span>
+        <h2 data-i18n="svc.h2" id="svc-title">Від легкого nude до <em>red carpet</em></h2>
       </div>
-      <p>Оберіть послугу — і вона одразу підставиться у форму запису внизу сторінки.</p>
+      <p data-i18n="svc.sub">Оберіть послугу — і вона одразу підставиться у форму запису внизу сторінки.</p>
     </div>
     <div class="svc-grid">
       <article class="svc reveal">
         <div class="ph"><img src="img/s-day.webp" width="640" height="800" alt="Палетка рожевих тіней" decoding="async"></div>
-        <h3>Денний макіяж</h3>
-        <p>Легкий тон, свіжа шкіра, акуратні брови. Для зустрічей, роботи й фото при денному світлі.</p>
-        <div class="svc-meta"><span class="dur">60 хв</span><span class="price"><small>від</small>1 200 ₴</span></div>
-        <button class="pick" type="button" data-service="day">Обрати <svg width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        <h3 data-i18n="svc.day.t">Денний макіяж</h3>
+        <p data-i18n="svc.day.d">Легкий тон, свіжа шкіра, акуратні брови. Для зустрічей, роботи й фото при денному світлі.</p>
+        <div class="svc-meta"><span data-i18n="dur60" class="dur">60 хв</span><span class="price"><small data-i18n="svc.from">від</small>1 200 ₴</span></div>
+        <button class="pick" type="button" data-service="day"><span data-i18n="svc.pick">Обрати</span> <svg width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></button>
       </article>
       <article class="svc reveal">
         <div class="ph"><img src="img/s-evening.webp" width="640" height="800" alt="Пензлі, помада та пудра на бежевому тлі" decoding="async"></div>
-        <h3>Вечірній · Soft Glam</h3>
-        <p>Скульптурування, виразні очі та стійкий фініш, розрахований на довгий вечір.</p>
-        <div class="svc-meta"><span class="dur">90 хв</span><span class="price"><small>від</small>1 600 ₴</span></div>
-        <button class="pick" type="button" data-service="evening">Обрати <svg width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        <h3 data-i18n="svc.eve.t">Вечірній · Soft Glam</h3>
+        <p data-i18n="svc.eve.d">Скульптурування, виразні очі та стійкий фініш, розрахований на довгий вечір.</p>
+        <div class="svc-meta"><span data-i18n="dur90" class="dur">90 хв</span><span class="price"><small data-i18n="svc.from">від</small>1 600 ₴</span></div>
+        <button class="pick" type="button" data-service="evening"><span data-i18n="svc.pick">Обрати</span> <svg width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></button>
       </article>
       <article class="svc reveal">
         <div class="ph"><img src="img/s-bridal.webp" width="640" height="800" alt="Розсипчаста пудра і пензлі" decoding="async"></div>
-        <h3>Весільний образ</h3>
-        <p>Пробний макіяж, план на день і стійкість для фото, сліз щастя й танців до ранку.</p>
-        <div class="svc-meta"><span class="dur">150 хв</span><span class="price"><small>від</small>3 500 ₴</span></div>
-        <button class="pick" type="button" data-service="bridal">Обрати <svg width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        <h3 data-i18n="svc.bridal.t">Весільний образ</h3>
+        <p data-i18n="svc.bridal.d">Пробний макіяж, план на день і стійкість для фото, сліз щастя й танців до ранку.</p>
+        <div class="svc-meta"><span data-i18n="dur150" class="dur">150 хв</span><span class="price"><small data-i18n="svc.from">від</small>3 500 ₴</span></div>
+        <button class="pick" type="button" data-service="bridal"><span data-i18n="svc.pick">Обрати</span> <svg width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></button>
       </article>
       <article class="svc reveal">
         <div class="ph"><img src="img/s-lesson.webp" width="640" height="800" alt="Палетка тіней у руці і пензель" decoding="async"></div>
-        <h3>Макіяж для себе</h3>
-        <p>Урок на вашій косметичці: що залишити, що докупити і як зібрати образ за 15 хвилин.</p>
-        <div class="svc-meta"><span class="dur">120 хв</span><span class="price"><small>від</small>2 000 ₴</span></div>
-        <button class="pick" type="button" data-service="lesson">Обрати <svg width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        <h3 data-i18n="svc.lesson.t">Макіяж для себе</h3>
+        <p data-i18n="svc.lesson.d">Урок на вашій косметичці: що залишити, що докупити і як зібрати образ за 15 хвилин.</p>
+        <div class="svc-meta"><span data-i18n="dur120" class="dur">120 хв</span><span class="price"><small data-i18n="svc.from">від</small>2 000 ₴</span></div>
+        <button class="pick" type="button" data-service="lesson"><span data-i18n="svc.pick">Обрати</span> <svg width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></button>
       </article>
       <article class="svc reveal">
         <div class="ph"><img src="img/s-brows.webp" width="640" height="800" alt="Туш для вій на рожевому тлі" decoding="async"></div>
-        <h3>Брови і вії</h3>
-        <p>Архітектура та фарбування брів, ламінування брів і вій.</p>
-        <div class="svc-meta"><span class="dur">50 хв</span><span class="price"><small>від</small>700 ₴</span></div>
-        <button class="pick" type="button" data-service="brows">Обрати <svg width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        <h3 data-i18n="svc.brows.t">Брови і вії</h3>
+        <p data-i18n="svc.brows.d">Архітектура та фарбування брів, ламінування брів і вій.</p>
+        <div class="svc-meta"><span data-i18n="dur50" class="dur">50 хв</span><span class="price"><small data-i18n="svc.from">від</small>700 ₴</span></div>
+        <button class="pick" type="button" data-service="brows"><span data-i18n="svc.pick">Обрати</span> <svg width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></button>
       </article>
       <article class="svc reveal">
         <div class="ph"><img src="img/s-care.webp" width="640" height="800" alt="Доглядова маска для обличчя в кабінеті косметолога" decoding="async"></div>
-        <h3>Доглядова косметологія</h3>
-        <p>Чистка, пілінги, масаж обличчя й підготовка шкіри перед важливою подією.</p>
-        <div class="svc-meta"><span class="dur">60 хв</span><span class="price"><small>від</small>1 100 ₴</span></div>
-        <button class="pick" type="button" data-service="care">Обрати <svg width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        <h3 data-i18n="svc.care.t">Доглядова косметологія</h3>
+        <p data-i18n="svc.care.d">Чистка, пілінги, масаж обличчя й підготовка шкіри перед важливою подією.</p>
+        <div class="svc-meta"><span data-i18n="dur60" class="dur">60 хв</span><span class="price"><small data-i18n="svc.from">від</small>1 100 ₴</span></div>
+        <button class="pick" type="button" data-service="care"><span data-i18n="svc.pick">Обрати</span> <svg width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></button>
       </article>
     </div>
-    <p class="svc-note">Ціни орієнтовні. Точну вартість Даша назве після короткої консультації в Telegram. Виїзд на локацію рахується окремо.</p>
+    <p data-i18n="svc.note" class="svc-note">Ціни орієнтовні. Точну вартість Даша назве після короткої консультації в Telegram. Виїзд на локацію рахується окремо.</p>
   </div>
 </section>
 
@@ -627,27 +640,27 @@ html.glitter-mode h2 em{background:linear-gradient(100deg,var(--champagne),var(-
   <div class="wrap">
     <div class="head">
       <div>
-        <span class="eyebrow">Портфоліо</span>
-        <h2 id="works-title">Образи, у яких <em>сяють</em></h2>
+        <span data-i18n="works.eyebrow" class="eyebrow">Портфоліо</span>
+        <h2 data-i18n="works.h2" id="works-title">Образи, у яких <em>сяють</em></h2>
       </div>
       <div class="filters" role="group" aria-label="Фільтр робіт">
-        <button class="chip" type="button" data-filter="all" aria-pressed="true">Усі</button>
-        <button class="chip" type="button" data-filter="day" aria-pressed="false">Денний</button>
-        <button class="chip" type="button" data-filter="evening" aria-pressed="false">Вечірній</button>
+        <button data-i18n="f.all" class="chip" type="button" data-filter="all" aria-pressed="true">Усі</button>
+        <button data-i18n="f.day" class="chip" type="button" data-filter="day" aria-pressed="false">Денний</button>
+        <button data-i18n="f.evening" class="chip" type="button" data-filter="evening" aria-pressed="false">Вечірній</button>
         <button class="chip" type="button" data-filter="editorial" aria-pressed="false">Editorial</button>
       </div>
     </div>
     <div class="works" id="works-grid">
-      <button class="work" type="button" data-cat="day" data-title="Glass Skin" data-desc="Сяюча шкіра без ефекту маски: мінімум тону, максимум догляду."><img src="img/w-glow.webp" width="720" height="900" alt="Образ Glass Skin: сяюча шкіра" decoding="async"><span class="cap"><span>Денний</span><b>Glass Skin</b><span class="dots"><i style="--c:#e9b9a0"></i><i style="--c:#c98e7c"></i><i style="--c:#f6e0cf"></i></span></span></button>
-      <button class="work" type="button" data-cat="evening" data-title="Golden Hour" data-desc="Теплі бронзові тіні й сяйво під світло заходу сонця."><img src="img/w-golden.webp" width="720" height="900" alt="Образ Golden Hour: теплий вечірній макіяж" decoding="async"><span class="cap"><span>Вечірній</span><b>Golden Hour</b><span class="dots"><i style="--c:#9c6230"></i><i style="--c:#e2c08f"></i><i style="--c:#c98e7c"></i></span></span></button>
+      <button class="work" type="button" data-cat="day" data-title="Glass Skin" data-desc="Сяюча шкіра без ефекту маски: мінімум тону, максимум догляду."><img src="img/w-glow.webp" width="720" height="900" alt="Образ Glass Skin: сяюча шкіра" decoding="async"><span class="cap"><span data-i18n="cat.day">Денний</span><b>Glass Skin</b><span class="dots"><i style="--c:#e9b9a0"></i><i style="--c:#c98e7c"></i><i style="--c:#f6e0cf"></i></span></span></button>
+      <button class="work" type="button" data-cat="evening" data-title="Golden Hour" data-desc="Теплі бронзові тіні й сяйво під світло заходу сонця."><img src="img/w-golden.webp" width="720" height="900" alt="Образ Golden Hour: теплий вечірній макіяж" decoding="async"><span class="cap"><span data-i18n="cat.evening">Вечірній</span><b>Golden Hour</b><span class="dots"><i style="--c:#9c6230"></i><i style="--c:#e2c08f"></i><i style="--c:#c98e7c"></i></span></span></button>
       <button class="work" type="button" data-cat="editorial" data-title="Electric Blue" data-desc="Чистий образ для зйомки з кольоровим світлом."><img src="img/w-editorial.webp" width="720" height="900" alt="Образ Electric Blue для фотозйомки" decoding="async"><span class="cap"><span>Editorial</span><b>Electric Blue</b><span class="dots"><i style="--c:#2e5bd6"></i><i style="--c:#c98e7c"></i><i style="--c:#f3e4df"></i></span></span></button>
-      <button class="work" type="button" data-cat="day" data-title="Rosy Nude" data-desc="Природний рум'янець і доглянуті брови."><img src="img/w-nude.webp" width="720" height="900" alt="Образ Rosy Nude: природний макіяж" decoding="async"><span class="cap"><span>Денний</span><b>Rosy Nude</b><span class="dots"><i style="--c:#e7a3a0"></i><i style="--c:#d4707f"></i><i style="--c:#f2d2c4"></i></span></span></button>
-      <button class="work" type="button" data-cat="evening" data-title="Velvet Night" data-desc="Димчасті очі й оксамитова шкіра для вечірнього світла."><img src="img/w-evening.webp" width="720" height="900" alt="Образ Velvet Night: вечірній макіяж" decoding="async"><span class="cap"><span>Вечірній</span><b>Velvet Night</b><span class="dots"><i style="--c:#5a4a48"></i><i style="--c:#a0646e"></i><i style="--c:#2b1712"></i></span></span></button>
+      <button class="work" type="button" data-cat="day" data-title="Rosy Nude" data-desc="Природний рум'янець і доглянуті брови."><img src="img/w-nude.webp" width="720" height="900" alt="Образ Rosy Nude: природний макіяж" decoding="async"><span class="cap"><span data-i18n="cat.day">Денний</span><b>Rosy Nude</b><span class="dots"><i style="--c:#e7a3a0"></i><i style="--c:#d4707f"></i><i style="--c:#f2d2c4"></i></span></span></button>
+      <button class="work" type="button" data-cat="evening" data-title="Velvet Night" data-desc="Димчасті очі й оксамитова шкіра для вечірнього світла."><img src="img/w-evening.webp" width="720" height="900" alt="Образ Velvet Night: вечірній макіяж" decoding="async"><span class="cap"><span data-i18n="cat.evening">Вечірній</span><b>Velvet Night</b><span class="dots"><i style="--c:#5a4a48"></i><i style="--c:#a0646e"></i><i style="--c:#2b1712"></i></span></span></button>
       <button class="work" type="button" data-cat="editorial" data-title="Neon Berry" data-desc="Ягідні губи й графічний контур під неонове світло."><img src="img/w-neon.webp" width="720" height="900" alt="Образ Neon Berry у неоновому світлі" decoding="async"><span class="cap"><span>Editorial</span><b>Neon Berry</b><span class="dots"><i style="--c:#8e1f4a"></i><i style="--c:#c2265a"></i><i style="--c:#eaa2b5"></i></span></span></button>
-      <button class="work" type="button" data-cat="day" data-title="Fresh Coral" data-desc="Кораловий акцент і легкі тіні для денного світла."><img src="img/w-fresh.webp" width="720" height="900" alt="Образ Fresh Coral: свіжий денний макіяж" decoding="async"><span class="cap"><span>Денний</span><b>Fresh Coral</b><span class="dots"><i style="--c:#e8705a"></i><i style="--c:#f19a7e"></i><i style="--c:#f5d6c0"></i></span></span></button>
+      <button class="work" type="button" data-cat="day" data-title="Fresh Coral" data-desc="Кораловий акцент і легкі тіні для денного світла."><img src="img/w-fresh.webp" width="720" height="900" alt="Образ Fresh Coral: свіжий денний макіяж" decoding="async"><span class="cap"><span data-i18n="cat.day">Денний</span><b>Fresh Coral</b><span class="dots"><i style="--c:#e8705a"></i><i style="--c:#f19a7e"></i><i style="--c:#f5d6c0"></i></span></span></button>
       <button class="work" type="button" data-cat="editorial" data-title="Lavender Haze" data-desc="Холодні рожеві відтінки та прозорі текстури."><img src="img/w-lavender.webp" width="720" height="900" alt="Образ Lavender Haze на лавандовому тлі" decoding="async"><span class="cap"><span>Editorial</span><b>Lavender Haze</b><span class="dots"><i style="--c:#b9a3d6"></i><i style="--c:#d4707f"></i><i style="--c:#f2d2c4"></i></span></span></button>
     </div>
-    <p class="works-note">У прототипі використано фото з Unsplash. Тут з'являться реальні роботи Даші.</p>
+    <p data-i18n="works.note" class="works-note">У прототипі використано фото з Unsplash. Тут з'являться реальні роботи Даші.</p>
   </div>
 </section>
 
@@ -663,10 +676,10 @@ html.glitter-mode h2 em{background:linear-gradient(100deg,var(--champagne),var(-
   <div class="wrap">
     <div class="head">
       <div>
-        <span class="eyebrow">Інтерактив</span>
-        <h2 id="studio-title">Студія образу: <em>приміряйте</em> макіяж</h2>
+        <span data-i18n="studio.eyebrow" class="eyebrow">Інтерактив</span>
+        <h2 data-i18n="studio.h2" id="studio-title">Студія образу: <em>приміряйте</em> макіяж</h2>
       </div>
-      <p>Оберіть готовий образ або зберіть свій: помада, тіні, рум'яна, стрілки і світло. Сподобалось — запишіться саме на цей образ.</p>
+      <p data-i18n="studio.sub">Оберіть готовий образ або зберіть свій: помада, тіні, рум'яна, стрілки і світло. Сподобалось — запишіться саме на цей образ.</p>
     </div>
   </div>
   <div class="wrap grid">
@@ -777,57 +790,57 @@ html.glitter-mode h2 em{background:linear-gradient(100deg,var(--champagne),var(-
         </div>
       </div>
       <div class="seg light-switch" role="group" aria-label="Світло в дзеркалі">
-        <button type="button" data-light="day" aria-pressed="true">Денне світло</button>
-        <button type="button" data-light="evening" aria-pressed="false">Вечірнє</button>
-        <button type="button" data-light="studio" aria-pressed="false">Студія</button>
+        <button data-i18n="light.day" type="button" data-light="day" aria-pressed="true">Денне світло</button>
+        <button data-i18n="light.evening" type="button" data-light="evening" aria-pressed="false">Вечірнє</button>
+        <button data-i18n="light.studio" type="button" data-light="studio" aria-pressed="false">Студія</button>
       </div>
     </div>
 
     <div class="panel">
       <div class="ctrl" style="border-top:0;padding-top:0">
-        <div class="ctrl-head"><span>Готові образи</span><span class="val" id="v-preset">Soft Glam</span></div>
+        <div class="ctrl-head"><span data-i18n="c.presets">Готові образи</span><span class="val" id="v-preset">Soft Glam</span></div>
         <div class="presets" id="presets" role="group" aria-label="Готові образи"></div>
       </div>
       <div class="ctrl">
-        <div class="ctrl-head"><span>Помада</span><span class="val" id="v-lip"></span></div>
+        <div class="ctrl-head"><span data-i18n="c.lip">Помада</span><span class="val" id="v-lip"></span></div>
         <div class="swatches" id="sw-lip" role="group" aria-label="Відтінок помади"></div>
         <div class="seg" id="seg-finish" role="group" aria-label="Фініш губ">
-          <button type="button" data-finish="matte" aria-pressed="false">Матовий</button>
-          <button type="button" data-finish="satin" aria-pressed="true">Сатин</button>
-          <button type="button" data-finish="gloss" aria-pressed="false">Глянець</button>
+          <button data-i18n="fin.matte" type="button" data-finish="matte" aria-pressed="false">Матовий</button>
+          <button data-i18n="fin.satin" type="button" data-finish="satin" aria-pressed="true">Сатин</button>
+          <button data-i18n="fin.gloss" type="button" data-finish="gloss" aria-pressed="false">Глянець</button>
         </div>
       </div>
       <div class="ctrl">
-        <div class="ctrl-head"><span>Тіні</span><span class="val" id="v-shadow"></span></div>
+        <div class="ctrl-head"><span data-i18n="c.shadow">Тіні</span><span class="val" id="v-shadow"></span></div>
         <div class="swatches" id="sw-shadow" role="group" aria-label="Відтінок тіней"></div>
       </div>
       <div class="ctrl">
-        <div class="ctrl-head"><span>Рум'яна</span><span class="val" id="v-blush"></span></div>
+        <div class="ctrl-head"><span data-i18n="c.blush">Рум'яна</span><span class="val" id="v-blush"></span></div>
         <div class="swatches" id="sw-blush" role="group" aria-label="Відтінок рум'ян"></div>
-        <div class="range-row"><label for="blush-int" class="muted" style="font-size:.85rem">Інтенсивність</label><input type="range" id="blush-int" min="0" max="100" value="50"><output id="blush-out" for="blush-int">50%</output></div>
+        <div class="range-row"><label data-i18n="c.int" for="blush-int" class="muted" style="font-size:.85rem">Інтенсивність</label><input type="range" id="blush-int" min="0" max="100" value="50"><output id="blush-out" for="blush-int">50%</output></div>
       </div>
       <div class="ctrl">
-        <div class="ctrl-head"><span>Стрілки та хайлайтер</span><span class="val" id="v-liner"></span></div>
+        <div class="ctrl-head"><span data-i18n="c.liner">Стрілки та хайлайтер</span><span class="val" id="v-liner"></span></div>
         <div class="seg" id="seg-liner" role="group" aria-label="Стрілки">
-          <button type="button" data-liner="none" aria-pressed="false">Без стрілок</button>
-          <button type="button" data-liner="thin" aria-pressed="false">Тонка лінія</button>
-          <button type="button" data-liner="wing" aria-pressed="true">Графічна стрілка</button>
+          <button data-i18n="lin.none" type="button" data-liner="none" aria-pressed="false">Без стрілок</button>
+          <button data-i18n="lin.thin" type="button" data-liner="thin" aria-pressed="false">Тонка лінія</button>
+          <button data-i18n="lin.wing" type="button" data-liner="wing" aria-pressed="true">Графічна стрілка</button>
           <button type="button" data-liner="smoky" aria-pressed="false">Smoky</button>
         </div>
         <div class="seg" id="seg-hl" role="group" aria-label="Хайлайтер">
-          <button type="button" data-hl="on" aria-pressed="true">Хайлайтер</button>
-          <button type="button" data-hl="off" aria-pressed="false">Без сяйва</button>
+          <button data-i18n="hl.on" type="button" data-hl="on" aria-pressed="true">Хайлайтер</button>
+          <button data-i18n="hl.off" type="button" data-hl="off" aria-pressed="false">Без сяйва</button>
         </div>
       </div>
       <div class="ctrl">
-        <div class="ctrl-head"><span>Тон шкіри</span><span class="val" id="v-skin"></span></div>
+        <div class="ctrl-head"><span data-i18n="c.skin">Тон шкіри</span><span class="val" id="v-skin"></span></div>
         <div class="swatches" id="sw-skin" role="group" aria-label="Тон шкіри"></div>
       </div>
       <div class="look-sum">
         <p id="look-text"><b>Soft Glam</b></p>
         <div class="cta-row">
-          <button class="btn btn-primary" type="button" id="book-look">Записатися на цей образ <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
-          <button class="btn btn-ghost" type="button" id="random-look"><svg aria-hidden="true"><use href="#i-spark"/></svg> Здивуй мене</button>
+          <button class="btn btn-primary" type="button" id="book-look"><span data-i18n="studio.book">Записатися на цей образ</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          <button class="btn btn-ghost" type="button" id="random-look"><svg aria-hidden="true"><use href="#i-spark"/></svg> <span data-i18n="studio.random">Здивуй мене</span></button>
         </div>
       </div>
     </div>
@@ -838,52 +851,52 @@ html.glitter-mode h2 em{background:linear-gradient(100deg,var(--champagne),var(-
 <section class="block booking" id="booking" aria-labelledby="booking-title">
   <div class="wrap">
     <div class="booking-info">
-      <span class="eyebrow">Запис</span>
-      <h2 id="booking-title">Ваш день — <em>ваш образ</em></h2>
-      <p class="muted" style="max-width:40ch">Заповніть коротку форму. Сайт збере заявку в одне повідомлення, яке ви надішлете Даші в Telegram або Instagram.</p>
+      <span data-i18n="book.eyebrow" class="eyebrow">Запис</span>
+      <h2 data-i18n="book.h2" id="booking-title">Ваш день — <em>ваш образ</em></h2>
+      <p data-i18n="book.sub" class="muted" style="max-width:40ch">Заповніть коротку форму. Сайт збере заявку в одне повідомлення, яке ви надішлете Даші в Telegram або Instagram.</p>
       <ol class="steps">
-        <li><div><b>Заявка</b><span>Оберіть послугу, дату і зручний час.</span></div></li>
-        <li><div><b>Підтвердження</b><span>Даша відповість у месенджері, уточнить деталі й підтвердить час.</span></div></li>
-        <li><div><b>Ваш образ</b><span>Приходьте з чистою шкірою, решту Даша зробить сама.</span></div></li>
+        <li><div data-i18n="step1"><b>Заявка</b><span>Оберіть послугу, дату і зручний час.</span></div></li>
+        <li><div data-i18n="step2"><b>Підтвердження</b><span>Даша відповість у месенджері, уточнить деталі й підтвердить час.</span></div></li>
+        <li><div data-i18n="step3"><b>Ваш образ</b><span>Приходьте з чистою шкірою, решту Даша зробить сама.</span></div></li>
       </ol>
     </div>
     <div class="card">
       <form class="form" id="book-form" novalidate>
         <div class="field">
-          <label for="f-name">Ім'я</label>
-          <input class="input" id="f-name" name="name" type="text" autocomplete="given-name" placeholder="Як до вас звертатися">
+          <label data-i18n="l.name" for="f-name">Ім'я</label>
+          <input class="input" id="f-name" data-i18n-ph="ph.name" name="name" type="text" autocomplete="given-name" placeholder="Як до вас звертатися">
           <span class="err" id="e-name"></span>
         </div>
         <div class="field">
-          <label for="f-contact">Контакт</label>
-          <input class="input" id="f-contact" name="contact" type="text" autocomplete="tel" placeholder="@telegram або телефон">
+          <label data-i18n="l.contact" for="f-contact">Контакт</label>
+          <input class="input" id="f-contact" data-i18n-ph="ph.contact" name="contact" type="text" autocomplete="tel" placeholder="@telegram або телефон">
           <span class="err" id="e-contact"></span>
         </div>
         <div class="field full">
-          <label for="f-service">Послуга</label>
+          <label data-i18n="l.service" for="f-service">Послуга</label>
           <select class="input" id="f-service" name="service">
-            <option value="day">Денний макіяж — від 1 200 ₴</option>
-            <option value="evening" selected>Вечірній · Soft Glam — від 1 600 ₴</option>
-            <option value="bridal">Весільний образ — від 3 500 ₴</option>
-            <option value="lesson">Макіяж для себе (урок) — від 2 000 ₴</option>
-            <option value="brows">Брови і вії — від 700 ₴</option>
-            <option value="care">Доглядова косметологія — від 1 100 ₴</option>
+            <option data-i18n="o.day" value="day">Денний макіяж — від 1 200 ₴</option>
+            <option data-i18n="o.evening" value="evening" selected>Вечірній · Soft Glam — від 1 600 ₴</option>
+            <option data-i18n="o.bridal" value="bridal">Весільний образ — від 3 500 ₴</option>
+            <option data-i18n="o.lesson" value="lesson">Макіяж для себе (урок) — від 2 000 ₴</option>
+            <option data-i18n="o.brows" value="brows">Брови і вії — від 700 ₴</option>
+            <option data-i18n="o.care" value="care">Доглядова косметологія — від 1 100 ₴</option>
           </select>
         </div>
         <div class="field">
-          <label for="f-date">Дата</label>
+          <label data-i18n="l.date" for="f-date">Дата</label>
           <input class="input" id="f-date" name="date" type="date">
           <span class="err" id="e-date"></span>
         </div>
         <div class="field">
-          <span class="lbl" id="l-place">Де</span>
+          <span data-i18n="l.place" class="lbl" id="l-place">Де</span>
           <div class="place" role="radiogroup" aria-labelledby="l-place">
-            <input type="radio" name="place" id="p-studio" value="У студії" checked><label for="p-studio">У студії</label>
-            <input type="radio" name="place" id="p-out" value="Виїзд"><label for="p-out">Виїзд</label>
+            <input type="radio" name="place" id="p-studio" value="У студії" checked><label data-i18n="l.studio" for="p-studio">У студії</label>
+            <input type="radio" name="place" id="p-out" value="Виїзд"><label data-i18n="l.out" for="p-out">Виїзд</label>
           </div>
         </div>
         <div class="field full">
-          <span class="lbl" id="l-time">Час</span>
+          <span data-i18n="l.time" class="lbl" id="l-time">Час</span>
           <div class="slots" role="radiogroup" aria-labelledby="l-time">
             <input type="radio" name="time" id="t-09" value="09:00"><label for="t-09">09:00</label>
             <input type="radio" name="time" id="t-11" value="11:00"><label for="t-11">11:00</label>
@@ -895,29 +908,29 @@ html.glitter-mode h2 em{background:linear-gradient(100deg,var(--champagne),var(-
           <span class="err" id="e-time"></span>
         </div>
         <div class="field full">
-          <label for="f-look">Образ зі Студії</label>
-          <input class="input" id="f-look" name="look" type="text" placeholder="Підставиться автоматично зі Студії образу">
+          <label data-i18n="l.look" for="f-look">Образ зі Студії</label>
+          <input class="input" id="f-look" data-i18n-ph="ph.look" name="look" type="text" placeholder="Підставиться автоматично зі Студії образу">
         </div>
         <div class="field full">
-          <label for="f-note">Коментар</label>
-          <textarea class="input" id="f-note" name="note" rows="3" placeholder="Подія, референси, особливості шкіри"></textarea>
+          <label data-i18n="l.note" for="f-note">Коментар</label>
+          <textarea class="input" id="f-note" data-i18n-ph="ph.note" name="note" rows="3" placeholder="Подія, референси, особливості шкіри"></textarea>
         </div>
         <div class="submit">
-          <small>Після натискання ви побачите готовий текст заявки і кнопки, щоб надіслати його Даші.</small>
-          <button class="btn btn-primary" type="submit">Сформувати заявку <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          <small data-i18n="book.hint">Після натискання ви побачите готовий текст заявки і кнопки, щоб надіслати його Даші.</small>
+          <button class="btn btn-primary" type="submit"><span data-i18n="book.submit">Сформувати заявку</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
         </div>
       </form>
       <div class="result" id="book-result" hidden>
-        <span class="eyebrow">Майже готово</span>
-        <h3>Заявку <em>сформовано</em></h3>
-        <p class="muted">Залишився один крок: скопіюйте текст і надішліть його Даші в Telegram або Instagram. Вона підтвердить час.</p>
+        <span data-i18n="res.eyebrow" class="eyebrow">Майже готово</span>
+        <h3 data-i18n="res.h">Заявку <em>сформовано</em></h3>
+        <p data-i18n="res.p" class="muted">Залишився один крок: скопіюйте текст і надішліть його Даші в Telegram або Instagram. Вона підтвердить час.</p>
         <pre id="book-msg"></pre>
         <div class="cta-row">
-          <button class="btn btn-primary" type="button" id="copy-msg"><svg aria-hidden="true"><use href="#i-copy"/></svg> Скопіювати текст</button>
+          <button class="btn btn-primary" type="button" id="copy-msg"><svg aria-hidden="true"><use href="#i-copy"/></svg> <span data-i18n="res.copy">Скопіювати текст</span></button>
           <a class="btn btn-ghost" href="https://t.me/dasha_dashofglow" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-tg"/></svg> Telegram</a>
           <a class="btn btn-ghost" href="https://ig.me/m/dasha.dashofglow" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"/></svg> Instagram</a>
         </div>
-        <button class="pick" type="button" id="edit-msg" style="align-self:flex-start;background:none;border:0;color:var(--mist);padding:0;text-decoration:underline">Змінити заявку</button>
+        <button data-i18n="res.edit" class="pick" type="button" id="edit-msg" style="align-self:flex-start;background:none;border:0;color:var(--mist);padding:0;text-decoration:underline">Змінити заявку</button>
       </div>
     </div>
   </div>
@@ -927,9 +940,9 @@ html.glitter-mode h2 em{background:linear-gradient(100deg,var(--champagne),var(-
 <section class="block bday" id="birthday" aria-labelledby="bday-title">
   <div class="wrap">
     <div class="bday-head">
-      <span class="eyebrow">10 жовтня 2026</span>
-      <h2 id="bday-title" class="shimmer">Даша, з 35-річчям!</h2>
-      <div class="shade-card"><i aria-hidden="true"></i><span><b>Відтінок №35 · Golden Era</b>найкращий у палетці</span></div>
+      <span data-i18n="bday.date" class="eyebrow">10 жовтня 2026</span>
+      <h2 data-i18n="bday.h2" id="bday-title" class="shimmer">Даша, з 35-річчям!</h2>
+      <div class="shade-card"><i aria-hidden="true"></i><span data-i18n="bday.shade"><b>Відтінок №35 · Golden Era</b>найкращий у палетці</span></div>
     </div>
     <div class="bday-grid">
       <div class="cake-box">
@@ -972,18 +985,18 @@ html.glitter-mode h2 em{background:linear-gradient(100deg,var(--champagne),var(-
           <g id="candles"></g>
         </svg>
         <p class="cake-status" id="cake-status" aria-live="polite">Горить свічок: 35</p>
-        <p class="cake-hint">Загадай бажання і проведи курсором або пальцем над вогниками. Можна й одним подихом:</p>
+        <p data-i18n="bday.hint" class="cake-hint">Загадай бажання і проведи курсором або пальцем над вогниками. Можна й одним подихом:</p>
         <div class="cta-row" style="justify-content:center">
-          <button class="btn btn-primary" type="button" id="blow-all">Задути всі свічки</button>
-          <button class="btn btn-ghost" type="button" id="relight" hidden>Запалити знову</button>
+          <button data-i18n="bday.blow" class="btn btn-primary" type="button" id="blow-all">Задути всі свічки</button>
+          <button data-i18n="bday.relight" class="btn btn-ghost" type="button" id="relight" hidden>Запалити знову</button>
         </div>
       </div>
       <article class="letter">
-        <h3>Дашо, <em>з днем народження!</em></h3>
-        <p>10 жовтня — твій день, і цей сайт — мій подарунок. Хай клієнтів буде стільки, що запис розписаний на місяці вперед. Хай кожен образ виходить кращим за попередній, а в твоєму житті буде рівно стільки сяйва, скільки ти даруєш іншим.</p>
-        <p>Ти робиш людей красивими й упевненими в собі. Хай світ відповідає тобі тим самим: любов'ю, здоров'ям, подорожами і приводами сміятися щодня. 35 — це не вік, це відтінок, і він тобі неймовірно пасує.</p>
-        <p class="from">З любов'ю, Влад<small>«Востіка Братєльнік»</small></p>
-        <p class="egg-hint">P.S. На сайті захована пасхалка. Підказка: логотип любить, коли на нього натискають п'ять разів поспіль.</p>
+        <h3 data-i18n="letter.h">Дашо, <em>з днем народження!</em></h3>
+        <p data-i18n="letter.p1">10 жовтня — твій день, і цей сайт — мій подарунок. Хай клієнтів буде стільки, що запис розписаний на місяці вперед. Хай кожен образ виходить кращим за попередній, а в твоєму житті буде рівно стільки сяйва, скільки ти даруєш іншим.</p>
+        <p data-i18n="letter.p2">Ти робиш людей красивими й упевненими в собі. Хай світ відповідає тобі тим самим: любов'ю, здоров'ям, подорожами і приводами сміятися щодня. 35 — це не вік, це відтінок, і він тобі неймовірно пасує.</p>
+        <p data-i18n="letter.from" class="from">З любов'ю, Влад<small>«Востіка Братєльнік»</small></p>
+        <p data-i18n="letter.egg" class="egg-hint">P.S. На сайті захована пасхалка. Підказка: логотип любить, коли на нього натискають п'ять разів поспіль.</p>
       </article>
     </div>
   </div>
@@ -993,18 +1006,18 @@ html.glitter-mode h2 em{background:linear-gradient(100deg,var(--champagne),var(-
 <section class="block faq" id="faq" aria-labelledby="faq-title">
   <div class="wrap">
     <div>
-      <div class="head" style="margin-bottom:28px"><div><span class="eyebrow">Питання</span><h2 id="faq-title">Перед <em>записом</em></h2></div></div>
+      <div class="head" style="margin-bottom:28px"><div><span data-i18n="faq.eyebrow" class="eyebrow">Питання</span><h2 data-i18n="faq.h2" id="faq-title">Перед <em>записом</em></h2></div></div>
       <div class="qa">
-        <details open><summary>Скільки триває макіяж?</summary><p>Денний займає близько години, вечірній — півтори, весільний із пробним — до двох з половиною годин. Точний час залежить від образу.</p></details>
-        <details><summary>Як підготуватися?</summary><p>Приходьте з чистою шкірою без тонального засобу. Якщо носите лінзи, вдягніть їх заздалегідь. Фото-референси вітаються.</p></details>
-        <details><summary>Чи можливий виїзд?</summary><p>Так: на весілля, зйомки й ранкові збори. Вартість виїзду залежить від локації, її обговоримо в Telegram.</p></details>
-        <details><summary>У мене чутлива шкіра. Що робити?</summary><p>Напишіть про це в коментарі до заявки. Даша підбере косметику і зробить пробу на невеликій ділянці шкіри.</p></details>
+        <details open><summary data-i18n="q1">Скільки триває макіяж?</summary><p data-i18n="a1">Денний займає близько години, вечірній — півтори, весільний із пробним — до двох з половиною годин. Точний час залежить від образу.</p></details>
+        <details><summary data-i18n="q2">Як підготуватися?</summary><p data-i18n="a2">Приходьте з чистою шкірою без тонального засобу. Якщо носите лінзи, вдягніть їх заздалегідь. Фото-референси вітаються.</p></details>
+        <details><summary data-i18n="q3">Чи можливий виїзд?</summary><p data-i18n="a3">Так: на весілля, зйомки й ранкові збори. Вартість виїзду залежить від локації, її обговоримо в Telegram.</p></details>
+        <details><summary data-i18n="q4">У мене чутлива шкіра. Що робити?</summary><p data-i18n="a4">Напишіть про це в коментарі до заявки. Даша підбере косметику і зробить пробу на невеликій ділянці шкіри.</p></details>
       </div>
     </div>
     <div class="contacts">
-      <span class="eyebrow">Контакти</span>
-      <h3 style="font-size:var(--step-3)">Пишіть <em>напряму</em></h3>
-      <p class="muted">Відповідаю в месенджерах. У директ можна надсилати референси образів.</p>
+      <span data-i18n="ct.eyebrow" class="eyebrow">Контакти</span>
+      <h3 data-i18n="ct.h" style="font-size:var(--step-3)">Пишіть <em>напряму</em></h3>
+      <p data-i18n="ct.sub" class="muted">Відповідаю в месенджерах. У директ можна надсилати референси образів.</p>
       <div class="contact">
         <span class="ico" aria-hidden="true"><svg><use href="#i-ig"/></svg></span>
         <div><b>Instagram</b><a class="handle" href="https://instagram.com/dasha.dashofglow" target="_blank" rel="noopener" id="ig-handle">@dasha.dashofglow</a></div>
@@ -1015,7 +1028,7 @@ html.glitter-mode h2 em{background:linear-gradient(100deg,var(--champagne),var(-
         <div><b>Telegram</b><a class="handle" href="https://t.me/dasha_dashofglow" target="_blank" rel="noopener" id="tg-handle">@dasha_dashofglow</a></div>
         <button class="icon-btn" type="button" data-copy="@dasha_dashofglow" aria-label="Скопіювати нік у Telegram"><svg aria-hidden="true"><use href="#i-copy"/></svg></button>
       </div>
-      <a class="btn btn-primary" href="#booking" style="align-self:flex-start">Записатися онлайн</a>
+      <a data-i18n="ct.book" class="btn btn-primary" href="#booking" style="align-self:flex-start">Записатися онлайн</a>
     </div>
   </div>
 </section>
@@ -1030,23 +1043,23 @@ html.glitter-mode h2 em{background:linear-gradient(100deg,var(--champagne),var(-
       <span class="tag">a dash of glow</span>
     </div>
     <ul class="foot-links">
-      <li><a href="#services">Послуги</a></li>
-      <li><a href="#works">Роботи</a></li>
-      <li><a href="#studio">Студія образу</a></li>
-      <li><a href="#booking">Запис</a></li>
-      <li><a href="#birthday">Привітання</a></li>
+      <li><a data-i18n="nav.services" href="#services">Послуги</a></li>
+      <li><a data-i18n="nav.works" href="#works">Роботи</a></li>
+      <li><a data-i18n="nav.studio" href="#studio">Студія образу</a></li>
+      <li><a data-i18n="nav.booking" href="#booking">Запис</a></li>
+      <li><a data-i18n="nav.bday" href="#birthday">Привітання</a></li>
     </ul>
     <div class="foot-fine">
-      <span>Сайт зроблено <b>Владом</b> — «Востіка Братєльнік» — для <b>Дашки</b> ♡ · прототип зібрано разом із Claude</span>
-      <span>© 2026 DASHA Makeup Atelier · Фото в прототипі: Unsplash</span>
+      <span data-i18n="foot.made">Сайт зроблено <b>Владом</b> — «Востіка Братєльнік» — для <b>Дашки</b> ♡ · прототип зібрано разом із Claude</span>
+      <span data-i18n="foot.copy">© 2026 DASHA Makeup Atelier · Фото в прототипі: Unsplash</span>
     </div>
     <button class="foot-egg" type="button" id="foot-egg" aria-label="Секрет">✦ 35 ✦</button>
   </div>
 </footer>
 
 <div class="mbar" id="mbar">
-  <a class="btn btn-primary" href="#booking">Записатися</a>
-  <a class="btn btn-ghost" href="#studio">Студія образу</a>
+  <a data-i18n="nav.book" class="btn btn-primary" href="#booking">Записатися</a>
+  <a data-i18n="mbar.studio" class="btn btn-ghost" href="#studio">Студія образу</a>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -1058,6 +1071,221 @@ html.glitter-mode h2 em{background:linear-gradient(100deg,var(--champagne),var(-
   const css = getComputedStyle(document.documentElement);
   const tok = n => css.getPropertyValue(n).trim();
   const PALETTE = [tok('--champagne'), tok('--rose'), tok('--glint'), tok('--berry'), tok('--gold-deep')];
+
+  /* ---------- i18n: Ukrainian lives in the markup, Polish and English here ---------- */
+  const HTML = {
+    pl: {
+      'credit.made': 'Stronę zrobił <b>Vlad</b> — «Vostika Bratelnik» — dla <b>Daszki</b> <span class="heart">♡</span>',
+      'credit.bday': '10.10 · Dasza kończy 35 · sto lat ✦',
+      'nav.services': 'Usługi', 'nav.works': 'Portfolio', 'nav.studio': 'Studio looku', 'nav.contacts': 'Kontakt', 'nav.booking': 'Rezerwacja', 'nav.bday': 'Życzenia', 'nav.book': 'Zarezerwuj',
+      'hero.eyebrow': 'Wizaż · Kosmetologia estetyczna',
+      'hero.lead': 'Makijaż, po którym rozpoznasz siebie — tylko w swoim najlepszym dniu. Makijaż dzienny i wieczorowy, ślubny, do sesji zdjęciowych oraz pielęgnacja skóry.',
+      'hero.cta1': 'Umów makijaż', 'hero.cta2': 'Przymierz look online',
+      'hero.m1': 'Studio lub dojazd', 'hero.m2': 'Próbny makijaż ślubny', 'hero.m3': 'Odpowiedź na Telegramie',
+      'seal': 'STO LAT ✦ DASZA ✦ 10.10 ✦ 35 ✦',
+      'mq.brows': 'Brwi i rzęsy', 'mq.care': 'Pielęgnacja',
+      'about.eyebrow': 'O mnie',
+      'about.h2': 'Cześć, jestem Dasza. Sprawiam, że <em>promieniejesz</em>',
+      'about.lead': 'Jestem wizażystką i kosmetolożką. Najlepszy makijaż zaczyna się od skóry: najpierw pielęgnacja i przygotowanie, potem kolor. Moje podejście to a dash of glow — dokładnie tyle blasku, żebyś wyglądała jak Ty, tylko pewniej.',
+      'about.p1': '<b>Skóra przede wszystkim</b><span>Każdy look zaczynam od pielęgnacji i przygotowania skóry.</span>',
+      'about.p2': '<b>Look pod Twoje wydarzenie</b><span>Uwzględniam światło, fotografa, sukienkę i to, jak długi będzie Twój dzień.</span>',
+      'about.p3': '<b>Czyste narzędzia</b><span>Zdezynfekowane pędzle i jednorazowe aplikatory dla każdej klientki.</span>',
+      'svc.eyebrow': 'Usługi', 'svc.h2': 'Od lekkiego nude po <em>red carpet</em>',
+      'svc.sub': 'Wybierz usługę — od razu pojawi się w formularzu rezerwacji na dole strony.',
+      'svc.day.t': 'Makijaż dzienny', 'svc.day.d': 'Lekki podkład, świeża skóra, zadbane brwi. Na spotkania, do pracy i do zdjęć w świetle dziennym.',
+      'svc.eve.t': 'Wieczorowy · Soft Glam', 'svc.eve.d': 'Konturowanie, wyraziste oczy i trwałe wykończenie na długi wieczór.',
+      'svc.bridal.t': 'Makijaż ślubny', 'svc.bridal.d': 'Makijaż próbny, plan dnia i trwałość na zdjęcia, łzy szczęścia i tańce do rana.',
+      'svc.lesson.t': 'Makijaż dla siebie', 'svc.lesson.d': 'Lekcja na Twojej kosmetyczce: co zostawić, co dokupić i jak zrobić look w 15 minut.',
+      'svc.brows.t': 'Brwi i rzęsy', 'svc.brows.d': 'Architektura i farbowanie brwi, laminacja brwi i rzęs.',
+      'svc.care.t': 'Kosmetologia pielęgnacyjna', 'svc.care.d': 'Oczyszczanie, peelingi, masaż twarzy i przygotowanie skóry przed ważnym wydarzeniem.',
+      'dur60': '60 min', 'dur90': '90 min', 'dur150': '150 min', 'dur120': '120 min', 'dur50': '50 min',
+      'svc.from': 'od', 'svc.pick': 'Wybierz',
+      'svc.note': 'Ceny orientacyjne. Dokładny koszt Dasza poda po krótkiej konsultacji na Telegramie. Dojazd na miejsce liczony osobno.',
+      'works.eyebrow': 'Portfolio', 'works.h2': 'Looki, w których <em>lśnisz</em>',
+      'f.all': 'Wszystkie', 'f.day': 'Dzienny', 'f.evening': 'Wieczorowy', 'cat.day': 'Dzienny', 'cat.evening': 'Wieczorowy',
+      'works.note': 'W prototypie użyto zdjęć z Unsplash. Tutaj pojawią się prawdziwe prace Daszy.',
+      'studio.eyebrow': 'Interaktywnie', 'studio.h2': 'Studio looku: <em>przymierz</em> makijaż',
+      'studio.sub': 'Wybierz gotowy look albo stwórz własny: pomadka, cienie, róż, kreski i światło. Podoba się? Zarezerwuj dokładnie ten look.',
+      'light.day': 'Światło dzienne', 'light.evening': 'Wieczorne', 'light.studio': 'Studio',
+      'c.presets': 'Gotowe looki', 'c.lip': 'Pomadka', 'c.shadow': 'Cienie', 'c.blush': 'Róż', 'c.liner': 'Kreski i rozświetlacz', 'c.skin': 'Odcień skóry', 'c.int': 'Intensywność',
+      'fin.matte': 'Matowe', 'fin.satin': 'Satynowe', 'fin.gloss': 'Błyszczące',
+      'lin.none': 'Bez kresek', 'lin.thin': 'Cienka linia', 'lin.wing': 'Graficzna kreska',
+      'hl.on': 'Rozświetlacz', 'hl.off': 'Bez blasku',
+      'studio.book': 'Zarezerwuj ten look', 'studio.random': 'Zaskocz mnie',
+      'book.eyebrow': 'Rezerwacja', 'book.h2': 'Twój dzień — <em>Twój look</em>',
+      'book.sub': 'Wypełnij krótki formularz. Strona zbierze zgłoszenie w jedną wiadomość, którą wyślesz Daszy na Telegramie lub Instagramie.',
+      'step1': '<b>Zgłoszenie</b><span>Wybierz usługę, datę i dogodną godzinę.</span>',
+      'step2': '<b>Potwierdzenie</b><span>Dasza odpisze na komunikatorze, doprecyzuje szczegóły i potwierdzi termin.</span>',
+      'step3': '<b>Twój look</b><span>Przyjdź z czystą skórą, resztą zajmie się Dasza.</span>',
+      'l.name': 'Imię', 'l.contact': 'Kontakt', 'l.service': 'Usługa', 'l.date': 'Data', 'l.place': 'Gdzie', 'l.studio': 'W studiu', 'l.out': 'Dojazd', 'l.time': 'Godzina', 'l.look': 'Look ze Studia', 'l.note': 'Komentarz',
+      'o.day': 'Makijaż dzienny — od 1 200 ₴', 'o.evening': 'Wieczorowy · Soft Glam — od 1 600 ₴', 'o.bridal': 'Makijaż ślubny — od 3 500 ₴', 'o.lesson': 'Makijaż dla siebie (lekcja) — od 2 000 ₴', 'o.brows': 'Brwi i rzęsy — od 700 ₴', 'o.care': 'Kosmetologia pielęgnacyjna — od 1 100 ₴',
+      'book.hint': 'Po kliknięciu zobaczysz gotowy tekst zgłoszenia i przyciski, aby wysłać go Daszy.',
+      'book.submit': 'Przygotuj zgłoszenie',
+      'res.eyebrow': 'Prawie gotowe', 'res.h': 'Zgłoszenie <em>gotowe</em>',
+      'res.p': 'Został jeden krok: skopiuj tekst i wyślij go Daszy na Telegramie lub Instagramie. Dasza potwierdzi termin.',
+      'res.copy': 'Skopiuj tekst', 'res.edit': 'Zmień zgłoszenie',
+      'bday.date': '10 października 2026', 'bday.h2': 'Dasza, sto lat na 35!',
+      'bday.shade': '<b>Odcień nr 35 · Golden Era</b>najlepszy w palecie',
+      'bday.hint': 'Pomyśl życzenie i przesuń kursorem lub palcem nad płomykami. Można też jednym dmuchnięciem:',
+      'bday.blow': 'Zdmuchnij wszystkie świeczki', 'bday.relight': 'Zapal ponownie',
+      'letter.h': 'Daszo, <em>wszystkiego najlepszego!</em>',
+      'letter.p1': '10 października to Twój dzień, a ta strona to mój prezent. Niech klientek będzie tyle, że kalendarz zapełni się na miesiące do przodu. Niech każdy look wychodzi lepiej od poprzedniego, a w Twoim życiu będzie dokładnie tyle blasku, ile dajesz innym.',
+      'letter.p2': 'Sprawiasz, że ludzie czują się piękni i pewni siebie. Niech świat odpowiada Ci tym samym: miłością, zdrowiem, podróżami i powodami do śmiechu każdego dnia. 35 to nie wiek, to odcień, i pasuje Ci niesamowicie.',
+      'letter.from': 'Z miłością, Vlad<small>«Vostika Bratelnik»</small>',
+      'letter.egg': 'P.S. Na stronie ukryty jest easter egg. Podpowiedź: logo lubi, gdy kliknie się w nie pięć razy z rzędu.',
+      'faq.eyebrow': 'Pytania', 'faq.h2': 'Przed <em>wizytą</em>',
+      'q1': 'Ile trwa makijaż?', 'a1': 'Dzienny zajmuje około godziny, wieczorowy półtorej, ślubny z próbnym do dwóch i pół godziny. Dokładny czas zależy od looku.',
+      'q2': 'Jak się przygotować?', 'a2': 'Przyjdź z czystą skórą bez podkładu. Jeśli nosisz soczewki, załóż je wcześniej. Zdjęcia-inspiracje mile widziane.',
+      'q3': 'Czy możliwy jest dojazd?', 'a3': 'Tak: na wesela, sesje zdjęciowe i poranne przygotowania. Koszt dojazdu zależy od miejsca, omówimy go na Telegramie.',
+      'q4': 'Mam wrażliwą skórę. Co robić?', 'a4': 'Napisz o tym w komentarzu do zgłoszenia. Dasza dobierze kosmetyki i zrobi test na małym fragmencie skóry.',
+      'ct.eyebrow': 'Kontakt', 'ct.h': 'Pisz <em>bezpośrednio</em>', 'ct.sub': 'Odpowiadam na komunikatorach. W wiadomościach możesz wysyłać inspiracje.', 'ct.book': 'Zarezerwuj online',
+      'foot.made': 'Stronę zrobił <b>Vlad</b> — «Vostika Bratelnik» — dla <b>Daszki</b> ♡ · prototyp stworzony razem z Claude',
+      'foot.copy': '© 2026 DASHA Makeup Atelier · Zdjęcia w prototypie: Unsplash',
+      'mbar.studio': 'Studio looku'
+    },
+    en: {
+      'credit.made': 'Website made by <b>Vlad</b> — “Vostika Bratelnik” — for <b>Dashka</b> <span class="heart">♡</span>',
+      'credit.bday': '10.10 · Dasha turns 35 · happy birthday ✦',
+      'nav.services': 'Services', 'nav.works': 'Portfolio', 'nav.studio': 'Look Studio', 'nav.contacts': 'Contacts', 'nav.booking': 'Booking', 'nav.bday': 'Birthday', 'nav.book': 'Book now',
+      'hero.eyebrow': 'Makeup · Aesthetic cosmetology',
+      'hero.lead': 'Makeup that lets you recognise yourself — on your very best day. Day and evening looks, weddings, photo shoots and skincare.',
+      'hero.cta1': 'Book your makeup', 'hero.cta2': 'Try a look online',
+      'hero.m1': 'Studio or on-site', 'hero.m2': 'Bridal trial makeup', 'hero.m3': 'Replies on Telegram',
+      'seal': 'HAPPY BIRTHDAY ✦ DASHA ✦ 10.10 ✦',
+      'mq.brows': 'Brows & lashes', 'mq.care': 'Skincare',
+      'about.eyebrow': 'About me',
+      'about.h2': 'Hi, I’m Dasha. I make you <em>glow</em>',
+      'about.lead': 'I’m a makeup artist and cosmetologist. The best makeup starts with the skin: care and prep first, then colour. My approach is a dash of glow — just enough shine for you to look like yourself, only more confident.',
+      'about.p1': '<b>Skin comes first</b><span>Every look starts with skincare and prep.</span>',
+      'about.p2': '<b>A look for your occasion</b><span>I consider the lighting, the photographer, the dress and how long your day will be.</span>',
+      'about.p3': '<b>Clean tools</b><span>Disinfected brushes and single-use applicators for every client.</span>',
+      'svc.eyebrow': 'Services', 'svc.h2': 'From soft nude to <em>red carpet</em>',
+      'svc.sub': 'Choose a service and it goes straight into the booking form below.',
+      'svc.day.t': 'Day makeup', 'svc.day.d': 'Light base, fresh skin, neat brows. For meetings, work and photos in daylight.',
+      'svc.eve.t': 'Evening · Soft Glam', 'svc.eve.d': 'Sculpting, defined eyes and a long-wear finish made for a long night.',
+      'svc.bridal.t': 'Bridal look', 'svc.bridal.d': 'Trial makeup, a plan for the day and staying power for photos, happy tears and dancing till dawn.',
+      'svc.lesson.t': 'Makeup for yourself', 'svc.lesson.d': 'A lesson with your own makeup bag: what to keep, what to buy and how to create a look in 15 minutes.',
+      'svc.brows.t': 'Brows & lashes', 'svc.brows.d': 'Brow shaping and tinting, brow and lash lamination.',
+      'svc.care.t': 'Skincare treatments', 'svc.care.d': 'Cleansing, peels, facial massage and skin prep before a big event.',
+      'dur60': '60 min', 'dur90': '90 min', 'dur150': '150 min', 'dur120': '120 min', 'dur50': '50 min',
+      'svc.from': 'from', 'svc.pick': 'Choose',
+      'svc.note': 'Prices are approximate. Dasha will confirm the exact price after a short consultation on Telegram. Travel to your location is charged separately.',
+      'works.eyebrow': 'Portfolio', 'works.h2': 'Looks that <em>glow</em>',
+      'f.all': 'All', 'f.day': 'Day', 'f.evening': 'Evening', 'cat.day': 'Day', 'cat.evening': 'Evening',
+      'works.note': 'This prototype uses photos from Unsplash. Dasha’s real work will appear here.',
+      'studio.eyebrow': 'Interactive', 'studio.h2': 'Look Studio: <em>try on</em> makeup',
+      'studio.sub': 'Pick a ready-made look or create your own: lipstick, eyeshadow, blush, liner and lighting. Like it? Book this exact look.',
+      'light.day': 'Daylight', 'light.evening': 'Evening', 'light.studio': 'Studio',
+      'c.presets': 'Ready looks', 'c.lip': 'Lipstick', 'c.shadow': 'Eyeshadow', 'c.blush': 'Blush', 'c.liner': 'Liner & highlighter', 'c.skin': 'Skin tone', 'c.int': 'Intensity',
+      'fin.matte': 'Matte', 'fin.satin': 'Satin', 'fin.gloss': 'Gloss',
+      'lin.none': 'No liner', 'lin.thin': 'Thin line', 'lin.wing': 'Graphic wing',
+      'hl.on': 'Highlighter', 'hl.off': 'No glow',
+      'studio.book': 'Book this look', 'studio.random': 'Surprise me',
+      'book.eyebrow': 'Booking', 'book.h2': 'Your day — <em>your look</em>',
+      'book.sub': 'Fill in a short form. The site turns it into one message that you send to Dasha on Telegram or Instagram.',
+      'step1': '<b>Request</b><span>Choose a service, a date and a convenient time.</span>',
+      'step2': '<b>Confirmation</b><span>Dasha replies in the messenger, clarifies the details and confirms the time.</span>',
+      'step3': '<b>Your look</b><span>Come with clean skin, Dasha takes care of the rest.</span>',
+      'l.name': 'Name', 'l.contact': 'Contact', 'l.service': 'Service', 'l.date': 'Date', 'l.place': 'Where', 'l.studio': 'At the studio', 'l.out': 'On-site', 'l.time': 'Time', 'l.look': 'Look from the Studio', 'l.note': 'Comment',
+      'o.day': 'Day makeup — from 1,200 ₴', 'o.evening': 'Evening · Soft Glam — from 1,600 ₴', 'o.bridal': 'Bridal look — from 3,500 ₴', 'o.lesson': 'Makeup for yourself (lesson) — from 2,000 ₴', 'o.brows': 'Brows & lashes — from 700 ₴', 'o.care': 'Skincare treatments — from 1,100 ₴',
+      'book.hint': 'Next you’ll see the ready text of your request and buttons to send it to Dasha.',
+      'book.submit': 'Prepare request',
+      'res.eyebrow': 'Almost done', 'res.h': 'Your request is <em>ready</em>',
+      'res.p': 'One step left: copy the text and send it to Dasha on Telegram or Instagram. She will confirm the time.',
+      'res.copy': 'Copy text', 'res.edit': 'Edit request',
+      'bday.date': 'October 10, 2026', 'bday.h2': 'Happy 35th, Dasha!',
+      'bday.shade': '<b>Shade No. 35 · Golden Era</b>the best one in the palette',
+      'bday.hint': 'Make a wish and swipe your cursor or finger over the flames. Or blow them all out at once:',
+      'bday.blow': 'Blow out all the candles', 'bday.relight': 'Light them again',
+      'letter.h': 'Dasha, <em>happy birthday!</em>',
+      'letter.p1': 'October 10 is your day, and this website is my gift. May you have so many clients that your calendar is booked months ahead. May every look turn out better than the last, and may your life hold exactly as much glow as you give to others.',
+      'letter.p2': 'You make people feel beautiful and confident. May the world give the same back to you: love, health, travels and reasons to laugh every day. 35 isn’t an age, it’s a shade, and it suits you perfectly.',
+      'letter.from': 'With love, Vlad<small>“Vostika Bratelnik”</small>',
+      'letter.egg': 'P.S. There’s an easter egg hidden on this site. Hint: the logo likes being clicked five times in a row.',
+      'faq.eyebrow': 'Questions', 'faq.h2': 'Before <em>booking</em>',
+      'q1': 'How long does makeup take?', 'a1': 'Day makeup takes about an hour, evening about an hour and a half, bridal with a trial up to two and a half hours. The exact time depends on the look.',
+      'q2': 'How should I prepare?', 'a2': 'Come with clean skin and no foundation. If you wear contact lenses, put them in beforehand. Reference photos are welcome.',
+      'q3': 'Can you come to me?', 'a3': 'Yes: for weddings, photo shoots and early-morning prep. The travel fee depends on the location, we’ll discuss it on Telegram.',
+      'q4': 'I have sensitive skin. What should I do?', 'a4': 'Mention it in the comment to your request. Dasha will choose suitable products and do a patch test first.',
+      'ct.eyebrow': 'Contacts', 'ct.h': 'Message me <em>directly</em>', 'ct.sub': 'I reply in messengers. Feel free to send look references in DMs.', 'ct.book': 'Book online',
+      'foot.made': 'Website made by <b>Vlad</b> — “Vostika Bratelnik” — for <b>Dashka</b> ♡ · prototype built together with Claude',
+      'foot.copy': '© 2026 DASHA Makeup Atelier · Prototype photos: Unsplash',
+      'mbar.studio': 'Look Studio'
+    }
+  };
+  const PH = {
+    pl: { 'ph.name': 'Jak mamy się do Ciebie zwracać', 'ph.contact': '@telegram lub telefon', 'ph.look': 'Uzupełni się automatycznie ze Studia looku', 'ph.note': 'Okazja, inspiracje, cechy skóry' },
+    en: { 'ph.name': 'What should we call you', 'ph.contact': '@telegram or phone', 'ph.look': 'Fills in automatically from the Look Studio', 'ph.note': 'Occasion, references, skin concerns' }
+  };
+  const WORK_DESC = {
+    pl: { 'Glass Skin': 'Promienna skóra bez efektu maski: minimum podkładu, maksimum pielęgnacji.', 'Golden Hour': 'Ciepłe brązowe cienie i blask w świetle zachodzącego słońca.', 'Electric Blue': 'Czysty look do sesji z kolorowym światłem.', 'Rosy Nude': 'Naturalny rumieniec i zadbane brwi.', 'Velvet Night': 'Przydymione oczy i aksamitna skóra na wieczór.', 'Neon Berry': 'Jagodowe usta i graficzny kontur w neonowym świetle.', 'Fresh Coral': 'Koralowy akcent i lekkie cienie na dzień.', 'Lavender Haze': 'Chłodne różowe odcienie i lekkie tekstury.' },
+    en: { 'Glass Skin': 'Radiant skin with no mask effect: minimal base, maximum care.', 'Golden Hour': 'Warm bronze eyeshadow and glow for sunset light.', 'Electric Blue': 'A clean look for a shoot with coloured lighting.', 'Rosy Nude': 'A natural flush and groomed brows.', 'Velvet Night': 'Smoky eyes and velvet skin for evening light.', 'Neon Berry': 'Berry lips and graphic contour under neon light.', 'Fresh Coral': 'A coral accent and light eyeshadow for daylight.', 'Lavender Haze': 'Cool pink tones and sheer textures.' }
+  };
+  const STR = {
+    uk: {
+      locale: 'uk-UA', copied: 'Скопійовано ✦', copyFail: 'Текст виділено. Скопіюйте його вручну (Ctrl+C або «Копіювати»).',
+      svcAdded: n => 'Послугу «' + n + '» додано до заявки', lookAdded: n => 'Образ «' + n + '» додано до заявки',
+      lit: n => 'Горить свічок: ' + n, wish: 'Бажання загадано ✦ Хай усе збудеться, Дашо!',
+      unlockCake: 'Бажання загадано ✦ У Студії образу відкрито секретний образ «Golden 35»',
+      glitterOn: '✦ Пасхалку знайдено! Режим блиску увімкнено. Даша, ти сяєш! Секретний образ «Golden 35» уже в Студії.',
+      glitterOff: 'Режим блиску вимкнено. Щоб повернути, повторіть секрет.',
+      footEgg: 'Тсс… секрет у логотипі. Або наберіть «dasha» на клавіатурі.',
+      errName: 'Вкажіть ім’я', errContact: 'Залиште контакт, щоб Даша могла відповісти', errDate: 'Оберіть дату', errPast: 'Ця дата вже минула. Оберіть сьогоднішню або пізнішу', errTime: 'Оберіть зручний час',
+      hello: 'Привіт, Даша! Хочу записатися ✦', mName: 'Ім’я', mService: 'Послуга', mWhen: 'Коли', mWhere: 'Де', mLook: 'Образ', mNote: 'Коментар', mContact: 'Мій контакт',
+      custom: 'Власний образ', lip: (n, f) => 'помада «' + n + '» (' + f + ')', shadow: n => 'тіні «' + n + '»', blush: (n, a) => 'рум’яна «' + n + '» ' + a + '%', hl: 'хайлайтер',
+      finish: { matte: 'матовий', satin: 'сатин', gloss: 'глянець' },
+      liner: { none: 'без стрілок', thin: 'тонка лінія', wing: 'графічна стрілка', smoky: 'smoky' },
+      skin: { porcelain: 'Порцеляна', ivory: 'Слонова кістка', beige: 'Беж', honey: 'Мед', mocha: 'Мокко', deep: 'Шоколад' }
+    },
+    pl: {
+      locale: 'pl-PL', copied: 'Skopiowano ✦', copyFail: 'Tekst zaznaczony. Skopiuj go ręcznie (Ctrl+C lub „Kopiuj”).',
+      svcAdded: n => 'Usługa „' + n + '” dodana do zgłoszenia', lookAdded: n => 'Look „' + n + '” dodany do zgłoszenia',
+      lit: n => 'Płonące świeczki: ' + n, wish: 'Życzenie pomyślane ✦ Niech wszystko się spełni, Daszo!',
+      unlockCake: 'Życzenie pomyślane ✦ W Studiu looku odblokowano sekretny look „Golden 35”',
+      glitterOn: '✦ Easter egg znaleziony! Tryb brokatu włączony. Dasza, błyszczysz! Sekretny look „Golden 35” czeka w Studiu.',
+      glitterOff: 'Tryb brokatu wyłączony. Aby go przywrócić, powtórz sekret.',
+      footEgg: 'Ćśś… sekret kryje się w logo. Albo wpisz „dasha” na klawiaturze.',
+      errName: 'Podaj imię', errContact: 'Zostaw kontakt, żeby Dasza mogła odpisać', errDate: 'Wybierz datę', errPast: 'Ta data już minęła. Wybierz dzisiejszą lub późniejszą', errTime: 'Wybierz dogodną godzinę',
+      hello: 'Cześć, Dasza! Chcę się umówić ✦', mName: 'Imię', mService: 'Usługa', mWhen: 'Kiedy', mWhere: 'Gdzie', mLook: 'Look', mNote: 'Komentarz', mContact: 'Mój kontakt',
+      custom: 'Własny look', lip: (n, f) => 'pomadka „' + n + '” (' + f + ')', shadow: n => 'cienie „' + n + '”', blush: (n, a) => 'róż „' + n + '” ' + a + '%', hl: 'rozświetlacz',
+      finish: { matte: 'matowe', satin: 'satynowe', gloss: 'błyszczące' },
+      liner: { none: 'bez kresek', thin: 'cienka linia', wing: 'graficzna kreska', smoky: 'smoky' },
+      skin: { porcelain: 'Porcelana', ivory: 'Kość słoniowa', beige: 'Beż', honey: 'Miód', mocha: 'Mokka', deep: 'Czekolada' }
+    },
+    en: {
+      locale: 'en-GB', copied: 'Copied ✦', copyFail: 'Text selected. Copy it manually (Ctrl+C or “Copy”).',
+      svcAdded: n => '“' + n + '” added to your request', lookAdded: n => 'Look “' + n + '” added to your request',
+      lit: n => 'Candles burning: ' + n, wish: 'Wish made ✦ May it all come true, Dasha!',
+      unlockCake: 'Wish made ✦ Secret look “Golden 35” unlocked in the Look Studio',
+      glitterOn: '✦ Easter egg found! Glitter mode on. Dasha, you shine! Secret look “Golden 35” is waiting in the Studio.',
+      glitterOff: 'Glitter mode off. Repeat the secret to turn it back on.',
+      footEgg: 'Psst… the secret is in the logo. Or type “dasha” on your keyboard.',
+      errName: 'Enter your name', errContact: 'Leave a contact so Dasha can reply', errDate: 'Choose a date', errPast: 'This date has passed. Choose today or later', errTime: 'Choose a convenient time',
+      hello: 'Hi Dasha! I’d like to book an appointment ✦', mName: 'Name', mService: 'Service', mWhen: 'When', mWhere: 'Where', mLook: 'Look', mNote: 'Comment', mContact: 'My contact',
+      custom: 'Custom look', lip: (n, f) => 'lipstick “' + n + '” (' + f + ')', shadow: n => 'eyeshadow “' + n + '”', blush: (n, a) => 'blush “' + n + '” ' + a + '%', hl: 'highlighter',
+      finish: { matte: 'matte', satin: 'satin', gloss: 'gloss' },
+      liner: { none: 'no liner', thin: 'thin line', wing: 'graphic wing', smoky: 'smoky' },
+      skin: { porcelain: 'Porcelain', ivory: 'Ivory', beige: 'Beige', honey: 'Honey', mocha: 'Mocha', deep: 'Chocolate' }
+    }
+  };
+  let lang = 'uk';
+  const T = () => STR[lang];
+  const ukHTML = new Map(), ukPH = new Map(), ukDesc = new Map();
+  $$('[data-i18n]').forEach(el => ukHTML.set(el, el.innerHTML));
+  $$('[data-i18n-ph]').forEach(el => ukPH.set(el, el.placeholder));
+  $$('.work').forEach(el => ukDesc.set(el, el.dataset.desc));
+  let onLang = () => {};
+  function setLang(next) {
+    lang = STR[next] ? next : 'uk';
+    ukHTML.forEach((uk, el) => { const v = lang === 'uk' ? uk : HTML[lang][el.dataset.i18n]; el.innerHTML = v ?? uk; });
+    ukPH.forEach((uk, el) => { el.placeholder = lang === 'uk' ? uk : (PH[lang][el.dataset.i18nPh] ?? uk); });
+    ukDesc.forEach((uk, el) => { el.dataset.desc = lang === 'uk' ? uk : (WORK_DESC[lang][el.dataset.title] ?? uk); });
+    document.documentElement.lang = lang;
+    $$('.lang button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+    try { localStorage.setItem('dasha-lang', lang); } catch (e) {}
+    onLang();
+  }
+  $$('.lang button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
 
   /* ---------- toast & copy ---------- */
   const toastEl = $('#toast');
@@ -1078,10 +1306,10 @@ html.glitter-mode h2 em{background:linear-gradient(100deg,var(--champagne),var(-
   function copyText(text, fallbackEl) {
     const fail = () => {
       if (fallbackEl) selectNode(fallbackEl);
-      toast('Текст виділено. Скопіюйте його вручну (Ctrl+C або «Копіювати»).');
+      toast(T().copyFail);
     };
     try {
-      navigator.clipboard.writeText(text).then(() => toast('Скопійовано ✦'), fail);
+      navigator.clipboard.writeText(text).then(() => toast(T().copied), fail);
     } catch (e) { fail(); }
   }
   $$('[data-copy]').forEach(b => b.addEventListener('click', () => copyText(b.dataset.copy, b.previousElementSibling.querySelector('a'))));
@@ -1234,7 +1462,7 @@ html.glitter-mode h2 em{background:linear-gradient(100deg,var(--champagne),var(-
   }
   $$('.pick[data-service]').forEach(b => b.addEventListener('click', () => {
     goBook(b.dataset.service);
-    toast('Послугу «' + serviceSel.selectedOptions[0].text.split(' — ')[0] + '» додано до заявки');
+    toast(T().svcAdded(serviceSel.selectedOptions[0].text.split(' — ')[0]));
   }));
 
   /* ---------- portfolio ---------- */
@@ -1311,8 +1539,8 @@ html.glitter-mode h2 em{background:linear-gradient(100deg,var(--champagne),var(-
       { id: 'deep', name: 'Шоколад', c: '#5e3926' }
     ]
   };
-  const FINISH = { matte: ['матовий', 0], satin: ['сатин', .28], gloss: ['глянець', .8] };
-  const LINER = { none: 'без стрілок', thin: 'тонка лінія', wing: 'графічна стрілка', smoky: 'smoky' };
+  const GLOSS = { matte: 0, satin: .28, gloss: .8 };
+  const LINERS = ['none', 'thin', 'wing', 'smoky'];
   const PRESETS = [
     { id: 'day', name: 'Day Nude', service: 'day', lip: 'latte', finish: 'satin', shadow: 'champ', blush: 'peach', blushA: 40, liner: 'thin', hl: 'on' },
     { id: 'soft', name: 'Soft Glam', service: 'evening', lip: 'rose', finish: 'satin', shadow: 'rosegold', blush: 'rose', blushA: 55, liner: 'wing', hl: 'on' },
@@ -1378,14 +1606,15 @@ html.glitter-mode h2 em{background:linear-gradient(100deg,var(--champagne),var(-
 
   function lookText() {
     const p = PRESETS.find(x => x.id === state.preset);
+    const t = T();
     const parts = [
-      'помада «' + find('lip', state.lip).name + '» (' + FINISH[state.finish][0] + ')',
-      'тіні «' + find('shadow', state.shadow).name + '»',
-      'рум’яна «' + find('blush', state.blush).name + '» ' + state.blushA + '%',
-      LINER[state.liner]
+      t.lip(find('lip', state.lip).name, t.finish[state.finish]),
+      t.shadow(find('shadow', state.shadow).name),
+      t.blush(find('blush', state.blush).name, state.blushA),
+      t.liner[state.liner]
     ];
-    if (state.hl === 'on') parts.push('хайлайтер');
-    return { title: p ? p.name : 'Власний образ', detail: parts.join(', ') };
+    if (state.hl === 'on') parts.push(t.hl);
+    return { title: p ? p.name : t.custom, detail: parts.join(', ') };
   }
 
   function render() {
@@ -1395,7 +1624,7 @@ html.glitter-mode h2 em{background:linear-gradient(100deg,var(--champagne),var(-
     face.style.setProperty('--blush', bl.c);
     face.style.setProperty('--blush-a', (state.blushA / 100 * 1.1).toFixed(2));
     face.style.setProperty('--skin', sk.c);
-    face.style.setProperty('--gloss', FINISH[state.finish][1]);
+    face.style.setProperty('--gloss', GLOSS[state.finish]);
     face.dataset.liner = state.liner;
     face.dataset.hl = state.hl;
     face.dataset.glitter = state.glitter ? 'on' : 'off';
@@ -1409,8 +1638,9 @@ html.glitter-mode h2 em{background:linear-gradient(100deg,var(--champagne),var(-
     $('#v-lip').textContent = lip.name;
     $('#v-shadow').textContent = sh.name;
     $('#v-blush').textContent = bl.name;
-    $('#v-skin').textContent = sk.name;
-    $('#v-liner').textContent = LINER[state.liner];
+    $('#v-skin').textContent = T().skin[sk.id];
+    $$('#sw-skin .sw').forEach(b => { b.title = T().skin[b.dataset.id]; b.setAttribute('aria-label', b.title); });
+    $('#v-liner').textContent = T().liner[state.liner];
     const t = lookText();
     $('#v-preset').textContent = t.title;
     const lt = $('#look-text');
@@ -1469,7 +1699,7 @@ html.glitter-mode h2 em{background:linear-gradient(100deg,var(--champagne),var(-
     $('#f-look').value = t.title + ': ' + t.detail;
     const p = PRESETS.find(x => x.id === state.preset);
     goBook(p ? p.service : null);
-    toast('Образ «' + t.title + '» додано до заявки');
+    toast(T().lookAdded(t.title));
   });
   $('#random-look').addEventListener('click', () => {
     const pick = arr => arr[(Math.random() * arr.length) | 0];
@@ -1477,8 +1707,8 @@ html.glitter-mode h2 em{background:linear-gradient(100deg,var(--champagne),var(-
     state.shadow = pick(DATA.shadow.filter(s => !s.secret || secretUnlocked)).id;
     state.blush = pick(DATA.blush).id;
     state.blushA = 25 + ((Math.random() * 50) | 0);
-    state.finish = pick(Object.keys(FINISH));
-    state.liner = pick(Object.keys(LINER));
+    state.finish = pick(Object.keys(GLOSS));
+    state.liner = pick(LINERS);
     state.hl = Math.random() > .3 ? 'on' : 'off';
     state.preset = null; state.glitter = false;
     render();
@@ -1502,35 +1732,36 @@ html.glitter-mode h2 em{background:linear-gradient(100deg,var(--champagne),var(-
     const contact = $('#f-contact').value.trim();
     const date = dateEl.value;
     const time = (form.querySelector('input[name="time"]:checked') || {}).value;
-    const place = form.querySelector('input[name="place"]:checked').value;
+    const place = form.querySelector('label[for="' + form.querySelector('input[name="place"]:checked').id + '"]').textContent;
     let ok = true;
-    setErr('name', name ? '' : 'Вкажіть ім’я'); ok = ok && !!name;
-    setErr('contact', contact ? '' : 'Залиште контакт, щоб Даша могла відповісти'); ok = ok && !!contact;
+    setErr('name', name ? '' : T().errName); ok = ok && !!name;
+    setErr('contact', contact ? '' : T().errContact); ok = ok && !!contact;
     let dateErr = '';
-    if (!date) dateErr = 'Оберіть дату';
-    else if (date < iso(today)) dateErr = 'Ця дата вже минула. Оберіть сьогоднішню або пізнішу';
+    if (!date) dateErr = T().errDate;
+    else if (date < iso(today)) dateErr = T().errPast;
     setErr('date', dateErr); ok = ok && !dateErr;
-    setErr('time', time ? '' : 'Оберіть зручний час'); ok = ok && !!time;
+    setErr('time', time ? '' : T().errTime); ok = ok && !!time;
     if (!ok) {
       const first = form.querySelector('[aria-invalid="true"] .input, [aria-invalid="true"] input');
       if (first) first.focus();
       return;
     }
     const d = new Date(date + 'T12:00:00');
-    const dateTxt = d.toLocaleDateString('uk-UA', { weekday: 'long', day: 'numeric', month: 'long' });
+    const dateTxt = d.toLocaleDateString(T().locale, { weekday: 'long', day: 'numeric', month: 'long' });
+    const t = T();
     const lines = [
-      'Привіт, Даша! Хочу записатися ✦',
+      t.hello,
       '',
-      'Ім’я: ' + name,
-      'Послуга: ' + serviceSel.selectedOptions[0].text,
-      'Коли: ' + dateTxt + ', ' + time,
-      'Де: ' + place
+      t.mName + ': ' + name,
+      t.mService + ': ' + serviceSel.selectedOptions[0].text,
+      t.mWhen + ': ' + dateTxt + ', ' + time,
+      t.mWhere + ': ' + place
     ];
     const look = $('#f-look').value.trim();
-    if (look) lines.push('Образ: ' + look);
+    if (look) lines.push(t.mLook + ': ' + look);
     const note = $('#f-note').value.trim();
-    if (note) lines.push('Коментар: ' + note);
-    lines.push('Мій контакт: ' + contact);
+    if (note) lines.push(t.mNote + ': ' + note);
+    lines.push(t.mContact + ': ' + contact);
     msgEl.textContent = lines.join('\n');
     form.hidden = true;
     result.hidden = false;
@@ -1593,7 +1824,7 @@ html.glitter-mode h2 em{background:linear-gradient(100deg,var(--champagne),var(-
   const status = $('#cake-status');
   let lit = candles.length, celebrated = false;
   function updateStatus() {
-    status.textContent = lit ? 'Горить свічок: ' + lit : 'Бажання загадано ✦ Хай усе збудеться, Дашо!';
+    status.textContent = lit ? T().lit(lit) : T().wish;
   }
   function blow(c) {
     if (!c.lit) return;
@@ -1612,7 +1843,7 @@ html.glitter-mode h2 em{background:linear-gradient(100deg,var(--champagne),var(-
     const r = cake.getBoundingClientRect();
     fx.burst(r.left + r.width / 2, r.top + r.height * .3, 180, 1.1);
     setTimeout(() => fx.rain(140), 300);
-    unlockSecret('Бажання загадано ✦ У Студії образу відкрито секретний образ «Golden 35»');
+    unlockSecret(T().unlockCake);
   }
   function svgPoint(e) {
     const pt = cake.createSVGPoint();
@@ -1657,9 +1888,9 @@ html.glitter-mode h2 em{background:linear-gradient(100deg,var(--champagne),var(-
     if (glitterOn) {
       fx.burst(x ?? innerWidth / 2, y ?? innerHeight / 3, 200, 1.2);
       setTimeout(() => fx.rain(120), 250);
-      unlockSecret('✦ Пасхалку знайдено! Режим блиску увімкнено. Даша, ти сяєш! Секретний образ «Golden 35» уже в Студії.');
+      unlockSecret(T().glitterOn);
     } else {
-      toast('Режим блиску вимкнено. Щоб повернути, повторіть секрет.');
+      toast(T().glitterOff);
     }
   }
   addEventListener('pointermove', e => {
@@ -1684,7 +1915,7 @@ html.glitter-mode h2 em{background:linear-gradient(100deg,var(--champagne),var(-
   $('#foot-egg').addEventListener('click', e => {
     const r = e.currentTarget.getBoundingClientRect();
     fx.burst(r.left + r.width / 2, r.top, 70, .8);
-    toast('Тсс… секрет у логотипі. Або наберіть «dasha» на клавіатурі.');
+    toast(T().footEgg);
   });
   let buf = '';
   addEventListener('keydown', e => {
@@ -1694,6 +1925,13 @@ html.glitter-mode h2 em{background:linear-gradient(100deg,var(--champagne),var(-
     buf = (buf + e.key.toLowerCase()).slice(-8);
     if (buf.endsWith('dasha') || buf.endsWith('даша') || buf.endsWith('35')) { buf = ''; toggleGlitter(); }
   });
+
+  onLang = () => { render(); updateStatus(); };
+  let saved = null;
+  try { saved = localStorage.getItem('dasha-lang'); } catch (e) {}
+  const nav = (navigator.language || '').toLowerCase();
+  const initial = saved || (nav.startsWith('pl') ? 'pl' : 'uk');
+  if (initial !== 'uk') setLang(initial);
 
   console.log('%c✦ DASHA · a dash of glow ✦', 'font: italic 28px Georgia, serif; color: #ecd3a1; background: #160910; padding: 10px 18px; border-radius: 12px');
   console.log('%cСайт зроблено Владом («Востіка Братєльнік») для Дашки. З 35-річчям! Секрет: наберіть «dasha» на сторінці.', 'color: #eaa2b5; font-size: 13px');
