@@ -1539,7 +1539,7 @@ function App() {
             <span>CUBE<br />SLICER</span>
           </a>
           <nav className="nav-links" aria-label="Sections">
-            <a href="#how">{T.nav.how}</a><a href="#roadmap">{T.nav.road}</a><a href="#gems">{T.nav.gems}</a><a href="#hooks">{T.nav.hooks}</a><a href="#money" className="nav-money">{T.nav.money}</a><a href="#meta">{T.nav.meta}</a>
+            <a href="#money" className="nav-money">{T.nav.money}</a><a href="#how">{T.nav.how}</a><a href="#roadmap">{T.nav.road}</a><a href="#gems">{T.nav.gems}</a><a href="#hooks">{T.nav.hooks}</a><a href="#meta">{T.nav.meta}</a>
           </nav>
           <div className="lang" role="group" aria-label="Language">
             {[['uk', 'UA'], ['ru', 'RU'], ['en', 'EN']].map(([k, l]) => (
@@ -1565,6 +1565,25 @@ function App() {
               <p className="hint">{T.hero.hint}</p>
             </div>
             <Stage T={T} save={save} setSave={setSave} phoneApi={phoneApi} />
+          </div>
+        </section>
+
+        <section className="money" id="money">
+          <div className="wrap">
+            <div className="money-head">
+              <span className="eyebrow">{T.money.eyebrow}</span>
+              <h2 className="money-title">{T.money.title}<span className="money-coins" aria-hidden="true"><Coin size={46} /><Gem size={36} /><Coin size={28} /></span></h2>
+              <p>{T.money.lead}</p>
+            </div>
+            <div className="streams">
+              {T.money.streams.map(([h, p], i) => (
+                <div key={i} className="stream"><span className="stream-n">${i + 1}</span><h3>{h}</h3><p>{p}</p></div>
+              ))}
+            </div>
+            <div className="winwin">
+              {T.money.win.map(([h, p], i) => <div key={i} className="ww"><b>{h}</b><span>{p}</span></div>)}
+            </div>
+            <Calc L={T.money.calc} />
           </div>
         </section>
 
@@ -1689,34 +1708,7 @@ function App() {
           </div>
         </section>
 
-        <section className="sec sec-lines" id="lines">
-          <div className="wrap">
-            <SecHead eyebrow={T.lines.eyebrow} title={T.lines.title} />
-            <div className="lines-grid">
-              {T.lines.items.map(([h, p], i) => <div key={i} className="line-item"><span className="line-ico" aria-hidden="true">✓</span><b>{h}</b><p>{p}</p></div>)}
-            </div>
-            <p className="source">{T.lines.note}</p>
-          </div>
-        </section>
 
-        <section className="money" id="money">
-          <div className="wrap">
-            <div className="money-head">
-              <span className="eyebrow">{T.money.eyebrow}</span>
-              <h2 className="money-title">{T.money.title}<span className="money-coins" aria-hidden="true"><Coin size={46} /><Gem size={36} /><Coin size={28} /></span></h2>
-              <p>{T.money.lead}</p>
-            </div>
-            <div className="streams">
-              {T.money.streams.map(([h, p], i) => (
-                <div key={i} className="stream"><span className="stream-n">${i + 1}</span><h3>{h}</h3><p>{p}</p></div>
-              ))}
-            </div>
-            <div className="winwin">
-              {T.money.win.map(([h, p], i) => <div key={i} className="ww"><b>{h}</b><span>{p}</span></div>)}
-            </div>
-            <Calc L={T.money.calc} />
-          </div>
-        </section>
 
         <section className="sec" id="meta">
           <div className="wrap">
@@ -1740,6 +1732,15 @@ function App() {
             <div className="next-grid">
               {T.next.items.map(([h, p], i) => <div key={i} className="next"><b>{h}</b><p>{p}</p></div>)}
             </div>
+          </div>
+        </section>
+        <section className="sec sec-lines" id="lines">
+          <div className="wrap">
+            <SecHead eyebrow={T.lines.eyebrow} title={T.lines.title} />
+            <div className="lines-grid">
+              {T.lines.items.map(([h, p], i) => <div key={i} className="line-item"><span className="line-ico" aria-hidden="true">✓</span><b>{h}</b><p>{p}</p></div>)}
+            </div>
+            <p className="source">{T.lines.note}</p>
           </div>
         </section>
       </main>
